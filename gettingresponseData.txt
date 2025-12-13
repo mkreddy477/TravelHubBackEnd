@@ -1,0 +1,3514 @@
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 1,
+            "cc" : "ECONOMY",
+            "cB" : "B",
+            "fB" : "B1N0C4S1"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_257EWRLHRAY5484~14136207554078759",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "686" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 242019.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "686",
+        "duration" : 415,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "EWR",
+          "name" : "Newark Liberty Intl Arpt",
+          "city" : "Newark",
+          "cityCode" : "EWR",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal B"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-09T18:35",
+        "at" : "2025-12-10T06:30",
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AY",
+            "name" : "Finnair",
+            "isLcc" : false
+          },
+          "fN" : "5484",
+          "eT" : "781"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 262719.5,
+              "TAF" : 29609.5,
+              "BF" : 233110.0,
+              "NF" : 262719.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "MF" : 75.0,
+                "OT" : 2970.0,
+                "YR" : 26551.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 1,
+            "cc" : "ECONOMY",
+            "cB" : "Y",
+            "fB" : "Y1N0C9S1"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_258EWRLHRAA6943~14136207554080890",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "232" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 262719.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "232",
+        "duration" : 415,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "EWR",
+          "name" : "Newark Liberty Intl Arpt",
+          "city" : "Newark",
+          "cityCode" : "EWR",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal B"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-09T18:35",
+        "at" : "2025-12-10T06:30",
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "6943",
+          "eT" : "789"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 423030.5,
+              "TAF" : 17115.5,
+              "BF" : 405915.0,
+              "NF" : 423030.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10801.0,
+                "MF" : 75.0,
+                "OT" : 6226.0
+              }
+            },
+            "sR" : 8,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 1,
+            "cc" : "ECONOMY",
+            "cB" : "Y",
+            "fB" : "Y1"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_259EWRZRHUA134ZRHLCYUA9776~14136207554083555",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "680" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "681" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 423030.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "680",
+        "duration" : 480,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "EWR",
+          "name" : "Newark Liberty Intl Arpt",
+          "city" : "Newark",
+          "cityCode" : "EWR",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal C"
+        },
+        "aa" : {
+          "code" : "ZRH",
+          "name" : "Zurich Airport",
+          "city" : "Zurich",
+          "cityCode" : "ZRH",
+          "country" : "Switzerland",
+          "countryCode" : "CH"
+        },
+        "dt" : "2025-12-09T18:40",
+        "at" : "2025-12-10T08:40",
+        "cT" : 210,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "UA",
+            "name" : "United Airlines",
+            "isLcc" : false
+          },
+          "fN" : "134",
+          "eT" : "763"
+        }
+      }, {
+        "id" : "681",
+        "duration" : 105,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "ZRH",
+          "name" : "Zurich Airport",
+          "city" : "Zurich",
+          "cityCode" : "ZRH",
+          "country" : "Switzerland",
+          "countryCode" : "CH"
+        },
+        "aa" : {
+          "code" : "LCY",
+          "name" : "London City Arpt",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB"
+        },
+        "dt" : "2025-12-10T12:10",
+        "at" : "2025-12-10T12:55",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "UA",
+            "name" : "United Airlines",
+            "isLcc" : false
+          },
+          "fN" : "9776",
+          "eT" : "290"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 27323.5,
+              "TAF" : 15813.5,
+              "BF" : 11510.0,
+              "NF" : 27323.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 2284.0,
+                "MF" : 75.0,
+                "OT" : 2900.0,
+                "YR" : 10541.0
+              }
+            },
+            "sR" : 6,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "T",
+            "fB" : "NLN09NB7"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_260JFKBOSDL5733BOSLHRAF9648~14136207554085899",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "558" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "559" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 27323.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "558",
+        "duration" : 82,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 4"
+        },
+        "aa" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal A"
+        },
+        "dt" : "2025-12-09T09:50",
+        "at" : "2025-12-09T11:12",
+        "cT" : 528,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "DL",
+            "name" : "Delta Air Lines",
+            "isLcc" : false
+          },
+          "fN" : "5733",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "559",
+        "duration" : 410,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-09T20:00",
+        "at" : "2025-12-10T07:50",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "AF",
+            "name" : "Air France",
+            "isLcc" : false
+          },
+          "fN" : "9648",
+          "eT" : "339"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 27323.5,
+              "TAF" : 15813.5,
+              "BF" : 11510.0,
+              "NF" : 27323.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 2284.0,
+                "MF" : 75.0,
+                "OT" : 2900.0,
+                "YR" : 10541.0
+              }
+            },
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "T",
+            "fB" : "NLN09NB7"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_261JFKBOSDL5765BOSLHRAF3567~14136207554087788",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "11" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "10" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 27323.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "10",
+        "duration" : 88,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 4"
+        },
+        "aa" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal A"
+        },
+        "dt" : "2025-12-09T06:05",
+        "at" : "2025-12-09T07:33",
+        "cT" : 697,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "DL",
+            "name" : "Delta Air Lines",
+            "isLcc" : false
+          },
+          "fN" : "5765",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "11",
+        "duration" : 400,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-09T19:10",
+        "at" : "2025-12-10T06:50",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "AF",
+            "name" : "Air France",
+            "isLcc" : false
+          },
+          "fN" : "3567",
+          "eT" : "339"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 27815.5,
+              "TAF" : 16305.5,
+              "BF" : 11510.0,
+              "NF" : 27815.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 2284.0,
+                "MF" : 75.0,
+                "OT" : 3392.0,
+                "YR" : 10541.0
+              }
+            },
+            "sR" : 6,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "T",
+            "fB" : "NLN09NB7"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_262JFKBOSDL5765BOSLHRAF9648~14136207554090383",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "181" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "182" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 27815.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "181",
+        "duration" : 88,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 4"
+        },
+        "aa" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal A"
+        },
+        "dt" : "2025-12-09T06:05",
+        "at" : "2025-12-09T07:33",
+        "cT" : 747,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "DL",
+            "name" : "Delta Air Lines",
+            "isLcc" : false
+          },
+          "fN" : "5765",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "182",
+        "duration" : 410,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-09T20:00",
+        "at" : "2025-12-10T07:50",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "AF",
+            "name" : "Air France",
+            "isLcc" : false
+          },
+          "fN" : "9648",
+          "eT" : "339"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 27815.5,
+              "TAF" : 16305.5,
+              "BF" : 11510.0,
+              "NF" : 27815.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 2284.0,
+                "MF" : 75.0,
+                "OT" : 3392.0,
+                "YR" : 10541.0
+              }
+            },
+            "sR" : 6,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "T",
+            "fB" : "NLN09NB7"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_263JFKBOSDL2639BOSLHRAF9648~14136207554093233",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "470" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "471" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 27815.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "470",
+        "duration" : 87,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 4"
+        },
+        "aa" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal A"
+        },
+        "dt" : "2025-12-09T20:59",
+        "at" : "2025-12-09T22:26",
+        "cT" : 1294,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "DL",
+            "name" : "Delta Air Lines",
+            "isLcc" : false
+          },
+          "fN" : "2639",
+          "eT" : "221"
+        }
+      }, {
+        "id" : "471",
+        "duration" : 410,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-10T20:00",
+        "at" : "2025-12-11T07:50",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "AF",
+            "name" : "Air France",
+            "isLcc" : false
+          },
+          "fN" : "9648",
+          "eT" : "339"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 33236.5,
+              "TAF" : 21726.5,
+              "BF" : 11510.0,
+              "NF" : 33236.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 2284.0,
+                "MF" : 75.0,
+                "OT" : 4625.0,
+                "YR" : 14729.0
+              }
+            },
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "E",
+            "fB" : "TLN09NB7"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_264JFKCDGDL8748CDGLHRAF1580~14136207554096192",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "13" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "14" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 33236.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "13",
+        "duration" : 445,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 1"
+        },
+        "aa" : {
+          "code" : "CDG",
+          "name" : "Charles De Gaulle Intl Arpt",
+          "city" : "Paris",
+          "cityCode" : "PAR",
+          "country" : "France",
+          "countryCode" : "FR",
+          "terminal" : "Terminal 2E"
+        },
+        "dt" : "2025-12-09T18:30",
+        "at" : "2025-12-10T07:55",
+        "cT" : 125,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "DL",
+            "name" : "Delta Air Lines",
+            "isLcc" : false
+          },
+          "fN" : "8748",
+          "eT" : "77W"
+        }
+      }, {
+        "id" : "14",
+        "duration" : 90,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "CDG",
+          "name" : "Charles De Gaulle Intl Arpt",
+          "city" : "Paris",
+          "cityCode" : "PAR",
+          "country" : "France",
+          "countryCode" : "FR",
+          "terminal" : "Terminal 2E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 4"
+        },
+        "dt" : "2025-12-10T10:00",
+        "at" : "2025-12-10T10:30",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "AF",
+            "name" : "Air France",
+            "isLcc" : false
+          },
+          "fN" : "1580",
+          "eT" : "223"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 33236.5,
+              "TAF" : 21726.5,
+              "BF" : 11510.0,
+              "NF" : 33236.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 2284.0,
+                "MF" : 75.0,
+                "OT" : 4625.0,
+                "YR" : 14729.0
+              }
+            },
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "E",
+            "fB" : "TLN09NB7"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_265JFKCDGDL8739CDGLHRAF1280~14136207554098566",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "650" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "651" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 33236.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "650",
+        "duration" : 435,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 1"
+        },
+        "aa" : {
+          "code" : "CDG",
+          "name" : "Charles De Gaulle Intl Arpt",
+          "city" : "Paris",
+          "cityCode" : "PAR",
+          "country" : "France",
+          "countryCode" : "FR",
+          "terminal" : "Terminal 2E"
+        },
+        "dt" : "2025-12-09T21:30",
+        "at" : "2025-12-10T10:45",
+        "cT" : 325,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "DL",
+            "name" : "Delta Air Lines",
+            "isLcc" : false
+          },
+          "fN" : "8739",
+          "eT" : "77W"
+        }
+      }, {
+        "id" : "651",
+        "duration" : 85,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "CDG",
+          "name" : "Charles De Gaulle Intl Arpt",
+          "city" : "Paris",
+          "cityCode" : "PAR",
+          "country" : "France",
+          "countryCode" : "FR",
+          "terminal" : "Terminal 2E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 4"
+        },
+        "dt" : "2025-12-10T16:10",
+        "at" : "2025-12-10T16:35",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "AF",
+            "name" : "Air France",
+            "isLcc" : false
+          },
+          "fN" : "1280",
+          "eT" : "223"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 33989.5,
+              "TAF" : 13694.5,
+              "BF" : 20295.0,
+              "NF" : 33989.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 88.0,
+                "MF" : 75.0,
+                "OT" : 2977.0,
+                "YR" : 10541.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_266JFKSNNAA8316SNNLHREI380~14136207554101070",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "954" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "955" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 33989.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "954",
+        "duration" : 385,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 7"
+        },
+        "aa" : {
+          "code" : "SNN",
+          "name" : "Shannon Arpt",
+          "city" : "Shannon",
+          "cityCode" : "SNN",
+          "country" : "Ireland",
+          "countryCode" : "IE"
+        },
+        "dt" : "2025-12-09T18:30",
+        "at" : "2025-12-10T05:55",
+        "cT" : 115,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "8316",
+          "eT" : "321"
+        }
+      }, {
+        "id" : "955",
+        "duration" : 85,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "SNN",
+          "name" : "Shannon Arpt",
+          "city" : "Shannon",
+          "cityCode" : "SNN",
+          "country" : "Ireland",
+          "countryCode" : "IE"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-10T07:50",
+        "at" : "2025-12-10T09:15",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "EI",
+            "name" : "Aer Lingus PLC",
+            "isLcc" : false
+          },
+          "fN" : "380",
+          "eT" : "32Q"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 34294.5,
+              "TAF" : 22784.5,
+              "BF" : 11510.0,
+              "NF" : 34294.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 2284.0,
+                "MF" : 75.0,
+                "OT" : 5683.0,
+                "YR" : 14729.0
+              }
+            },
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "E",
+            "fB" : "TLN09NB7"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_267JFKAMSDL46AMSLHRKL1005~14136207554103392",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "936" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "937" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 34294.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "936",
+        "duration" : 435,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 4"
+        },
+        "aa" : {
+          "code" : "AMS",
+          "name" : "Schiphol Arpt",
+          "city" : "Amsterdam",
+          "cityCode" : "AMS",
+          "country" : "Netherlands",
+          "countryCode" : "NL"
+        },
+        "dt" : "2025-12-09T16:40",
+        "at" : "2025-12-10T05:55",
+        "cT" : 265,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "DL",
+            "name" : "Delta Air Lines",
+            "isLcc" : false
+          },
+          "fN" : "46",
+          "eT" : "333"
+        }
+      }, {
+        "id" : "937",
+        "duration" : 85,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "AMS",
+          "name" : "Schiphol Arpt",
+          "city" : "Amsterdam",
+          "cityCode" : "AMS",
+          "country" : "Netherlands",
+          "countryCode" : "NL"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 4"
+        },
+        "dt" : "2025-12-10T10:20",
+        "at" : "2025-12-10T10:45",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "KL",
+            "name" : "KLM Royal Dutch Airlines",
+            "isLcc" : false
+          },
+          "fN" : "1005",
+          "eT" : "32Q"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 35054.5,
+              "TAF" : 13529.5,
+              "BF" : 21525.0,
+              "NF" : 35054.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10541.0,
+                "MF" : 75.0,
+                "OT" : 2900.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_268JFKBOSAA4503BOSLHRBA202~14136207554106013",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "462" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "463" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 35054.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "462",
+        "duration" : 77,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 8"
+        },
+        "aa" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal B"
+        },
+        "dt" : "2025-12-09T17:35",
+        "at" : "2025-12-09T18:52",
+        "cT" : 163,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "4503",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "463",
+        "duration" : 400,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-09T21:35",
+        "at" : "2025-12-10T09:15",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "BA",
+            "name" : "British Airways",
+            "isLcc" : false
+          },
+          "fN" : "202",
+          "eT" : "777"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 35054.5,
+              "TAF" : 13529.5,
+              "BF" : 21525.0,
+              "NF" : 35054.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10541.0,
+                "MF" : 75.0,
+                "OT" : 2900.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_269JFKBOSAA4730BOSLHRBA238~14136207554108626",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "676" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "677" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 35054.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "676",
+        "duration" : 74,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 8"
+        },
+        "aa" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal B"
+        },
+        "dt" : "2025-12-09T21:40",
+        "at" : "2025-12-09T22:54",
+        "cT" : 516,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "4730",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "677",
+        "duration" : 390,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-10T07:30",
+        "at" : "2025-12-10T19:00",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "BA",
+            "name" : "British Airways",
+            "isLcc" : false
+          },
+          "fN" : "238",
+          "eT" : "781"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 35054.5,
+              "TAF" : 13529.5,
+              "BF" : 21525.0,
+              "NF" : 35054.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10541.0,
+                "MF" : 75.0,
+                "OT" : 2900.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_270JFKBOSAA4708BOSLHRBA212~14136207554111483",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "661" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "662" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 35054.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "661",
+        "duration" : 85,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 8"
+        },
+        "aa" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal B"
+        },
+        "dt" : "2025-12-09T08:10",
+        "at" : "2025-12-09T09:35",
+        "cT" : 560,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "4708",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "662",
+        "duration" : 395,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-09T18:55",
+        "at" : "2025-12-10T06:30",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "BA",
+            "name" : "British Airways",
+            "isLcc" : false
+          },
+          "fN" : "212",
+          "eT" : "77W"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 35205.5,
+              "TAF" : 14910.5,
+              "BF" : 20295.0,
+              "NF" : 35205.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 88.0,
+                "MF" : 75.0,
+                "OT" : 4193.0,
+                "YR" : 10541.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_271JFKSNNAA8316SNNLHREI386~14136207554113881",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "832" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "833" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 35205.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "832",
+        "duration" : 385,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 7"
+        },
+        "aa" : {
+          "code" : "SNN",
+          "name" : "Shannon Arpt",
+          "city" : "Shannon",
+          "cityCode" : "SNN",
+          "country" : "Ireland",
+          "countryCode" : "IE"
+        },
+        "dt" : "2025-12-09T18:30",
+        "at" : "2025-12-10T05:55",
+        "cT" : 695,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "8316",
+          "eT" : "321"
+        }
+      }, {
+        "id" : "833",
+        "duration" : 85,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "SNN",
+          "name" : "Shannon Arpt",
+          "city" : "Shannon",
+          "cityCode" : "SNN",
+          "country" : "Ireland",
+          "countryCode" : "IE"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-10T17:30",
+        "at" : "2025-12-10T18:55",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "EI",
+            "name" : "Aer Lingus PLC",
+            "isLcc" : false
+          },
+          "fN" : "386",
+          "eT" : "32N"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 35205.5,
+              "TAF" : 14910.5,
+              "BF" : 20295.0,
+              "NF" : 35205.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 88.0,
+                "MF" : 75.0,
+                "OT" : 4193.0,
+                "YR" : 10541.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_272JFKSNNAA8316SNNLHREI388~14136207554116511",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "778" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "779" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 35205.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "778",
+        "duration" : 385,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 7"
+        },
+        "aa" : {
+          "code" : "SNN",
+          "name" : "Shannon Arpt",
+          "city" : "Shannon",
+          "cityCode" : "SNN",
+          "country" : "Ireland",
+          "countryCode" : "IE"
+        },
+        "dt" : "2025-12-09T18:30",
+        "at" : "2025-12-10T05:55",
+        "cT" : 850,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "8316",
+          "eT" : "321"
+        }
+      }, {
+        "id" : "779",
+        "duration" : 80,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "SNN",
+          "name" : "Shannon Arpt",
+          "city" : "Shannon",
+          "cityCode" : "SNN",
+          "country" : "Ireland",
+          "countryCode" : "IE"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-10T20:05",
+        "at" : "2025-12-10T21:25",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "EI",
+            "name" : "Aer Lingus PLC",
+            "isLcc" : false
+          },
+          "fN" : "388",
+          "eT" : "32N"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 35546.5,
+              "TAF" : 14021.5,
+              "BF" : 21525.0,
+              "NF" : 35546.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10541.0,
+                "MF" : 75.0,
+                "OT" : 3392.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_273JFKBOSAA4503BOSLHRBA238~14136207554118718",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "413" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "414" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 35546.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "413",
+        "duration" : 77,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 8"
+        },
+        "aa" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal B"
+        },
+        "dt" : "2025-12-09T17:35",
+        "at" : "2025-12-09T18:52",
+        "cT" : 758,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "4503",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "414",
+        "duration" : 390,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-10T07:30",
+        "at" : "2025-12-10T19:00",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "BA",
+            "name" : "British Airways",
+            "isLcc" : false
+          },
+          "fN" : "238",
+          "eT" : "781"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 35546.5,
+              "TAF" : 14021.5,
+              "BF" : 21525.0,
+              "NF" : 35546.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10541.0,
+                "MF" : 75.0,
+                "OT" : 3392.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_274JFKBOSAA4730BOSLHRBA212~14136207554120658",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "717" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "718" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 35546.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "717",
+        "duration" : 74,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 8"
+        },
+        "aa" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal B"
+        },
+        "dt" : "2025-12-09T21:40",
+        "at" : "2025-12-09T22:54",
+        "cT" : 1201,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "4730",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "718",
+        "duration" : 395,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "BOS",
+          "name" : "Logan Intl Arpt",
+          "city" : "Boston",
+          "cityCode" : "BOS",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal E"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-10T18:55",
+        "at" : "2025-12-11T06:30",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "BA",
+            "name" : "British Airways",
+            "isLcc" : false
+          },
+          "fN" : "212",
+          "eT" : "77W"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 35622.5,
+              "TAF" : 14097.5,
+              "BF" : 21525.0,
+              "NF" : 35622.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10541.0,
+                "MF" : 75.0,
+                "OT" : 3468.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_275JFKYYZAA4552YYZLHRBA92~14136207554122824",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "123" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "124" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 35622.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "123",
+        "duration" : 110,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 8"
+        },
+        "aa" : {
+          "code" : "YYZ",
+          "name" : "Lester B Pearson Intl",
+          "city" : "Toronto",
+          "cityCode" : "YTO",
+          "country" : "Canada",
+          "countryCode" : "CA",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-09T07:59",
+        "at" : "2025-12-09T09:49",
+        "cT" : 496,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "4552",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "124",
+        "duration" : 430,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "YYZ",
+          "name" : "Lester B Pearson Intl",
+          "city" : "Toronto",
+          "cityCode" : "YTO",
+          "country" : "Canada",
+          "countryCode" : "CA",
+          "terminal" : "Terminal 3"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-09T18:05",
+        "at" : "2025-12-10T06:15",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "BA",
+            "name" : "British Airways",
+            "isLcc" : false
+          },
+          "fN" : "92",
+          "eT" : "777"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 35622.5,
+              "TAF" : 14097.5,
+              "BF" : 21525.0,
+              "NF" : 35622.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10541.0,
+                "MF" : 75.0,
+                "OT" : 3468.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_276JFKYYZAA4552YYZLHRBA98~14136207554124613",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "420" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "421" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 35622.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "420",
+        "duration" : 110,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 8"
+        },
+        "aa" : {
+          "code" : "YYZ",
+          "name" : "Lester B Pearson Intl",
+          "city" : "Toronto",
+          "cityCode" : "YTO",
+          "country" : "Canada",
+          "countryCode" : "CA",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-09T07:59",
+        "at" : "2025-12-09T09:49",
+        "cT" : 736,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "4552",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "421",
+        "duration" : 425,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "YYZ",
+          "name" : "Lester B Pearson Intl",
+          "city" : "Toronto",
+          "cityCode" : "YTO",
+          "country" : "Canada",
+          "countryCode" : "CA",
+          "terminal" : "Terminal 3"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-09T22:05",
+        "at" : "2025-12-10T10:10",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "BA",
+            "name" : "British Airways",
+            "isLcc" : false
+          },
+          "fN" : "98",
+          "eT" : "777"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 35622.5,
+              "TAF" : 14097.5,
+              "BF" : 21525.0,
+              "NF" : 35622.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10541.0,
+                "MF" : 75.0,
+                "OT" : 3468.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "N",
+            "fB" : "NLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_277JFKYYZAA4558YYZLHRBA92~14136207554126688",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "735" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "736" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 35622.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "735",
+        "duration" : 115,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 8"
+        },
+        "aa" : {
+          "code" : "YYZ",
+          "name" : "Lester B Pearson Intl",
+          "city" : "Toronto",
+          "cityCode" : "YTO",
+          "country" : "Canada",
+          "countryCode" : "CA",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-09T20:03",
+        "at" : "2025-12-09T21:58",
+        "cT" : 1182,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "4558",
+          "eT" : "E75"
+        }
+      }, {
+        "id" : "736",
+        "duration" : 430,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "YYZ",
+          "name" : "Lester B Pearson Intl",
+          "city" : "Toronto",
+          "cityCode" : "YTO",
+          "country" : "Canada",
+          "countryCode" : "CA",
+          "terminal" : "Terminal 3"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-10T17:40",
+        "at" : "2025-12-11T05:50",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "BA",
+            "name" : "British Airways",
+            "isLcc" : false
+          },
+          "fN" : "92",
+          "eT" : "777"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 38423.5,
+              "TAF" : 15583.5,
+              "BF" : 22840.0,
+              "NF" : 38423.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10541.0,
+                "MF" : 75.0,
+                "OT" : 4954.0
+              }
+            },
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "V",
+            "fB" : "VL700LGT"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_278JFKMUCUA8870MUCLHRLH2472~14136207554129233",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "78" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "79" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 38423.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "78",
+        "duration" : 460,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 1"
+        },
+        "aa" : {
+          "code" : "MUC",
+          "name" : "Munich Intl Arpt",
+          "city" : "Munich",
+          "cityCode" : "MUC",
+          "country" : "Germany",
+          "countryCode" : "DE",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-09T17:30",
+        "at" : "2025-12-10T07:10",
+        "cT" : 135,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "UA",
+            "name" : "United Airlines",
+            "isLcc" : false
+          },
+          "fN" : "8870",
+          "eT" : "359"
+        }
+      }, {
+        "id" : "79",
+        "duration" : 120,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "MUC",
+          "name" : "Munich Intl Arpt",
+          "city" : "Munich",
+          "cityCode" : "MUC",
+          "country" : "Germany",
+          "countryCode" : "DE",
+          "terminal" : "Terminal 2"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-10T09:25",
+        "at" : "2025-12-10T10:25",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "LH",
+            "name" : "Lufthansa",
+            "isLcc" : false
+          },
+          "fN" : "2472",
+          "eT" : "32N"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 38423.5,
+              "TAF" : 15583.5,
+              "BF" : 22840.0,
+              "NF" : 38423.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 10541.0,
+                "MF" : 75.0,
+                "OT" : 4954.0
+              }
+            },
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "V",
+            "fB" : "VL700LGT"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_279JFKMUCUA8870MUCLHRLH4194~14136207554131421",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "530" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "531" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 38423.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "530",
+        "duration" : 460,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 1"
+        },
+        "aa" : {
+          "code" : "MUC",
+          "name" : "Munich Intl Arpt",
+          "city" : "Munich",
+          "cityCode" : "MUC",
+          "country" : "Germany",
+          "countryCode" : "DE",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-09T17:30",
+        "at" : "2025-12-10T07:10",
+        "cT" : 290,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "UA",
+            "name" : "United Airlines",
+            "isLcc" : false
+          },
+          "fN" : "8870",
+          "eT" : "359"
+        }
+      }, {
+        "id" : "531",
+        "duration" : 120,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "MUC",
+          "name" : "Munich Intl Arpt",
+          "city" : "Munich",
+          "cityCode" : "MUC",
+          "country" : "Germany",
+          "countryCode" : "DE",
+          "terminal" : "Terminal 2"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-10T12:00",
+        "at" : "2025-12-10T13:00",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "LH",
+            "name" : "Lufthansa",
+            "isLcc" : false
+          },
+          "fN" : "4194",
+          "eT" : "32N"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 53170.5,
+              "TAF" : 15310.5,
+              "BF" : 37860.0,
+              "NF" : 53170.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "MF" : 75.0,
+                "OT" : 4593.0,
+                "YR" : 10629.0
+              }
+            },
+            "sR" : 7,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 0,
+            "cc" : "ECONOMY",
+            "cB" : "S",
+            "fB" : "SLN0D4M5"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_280JFKCDGAA44CDGLHRBA303~14136207554133914",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "73" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "74" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 53170.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "73",
+        "duration" : 430,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 8"
+        },
+        "aa" : {
+          "code" : "CDG",
+          "name" : "Charles De Gaulle Intl Arpt",
+          "city" : "Paris",
+          "cityCode" : "PAR",
+          "country" : "France",
+          "countryCode" : "FR",
+          "terminal" : "Terminal 2C"
+        },
+        "dt" : "2025-12-09T17:25",
+        "at" : "2025-12-10T06:35",
+        "cT" : 230,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "AA",
+            "name" : "American Airlines",
+            "isLcc" : false
+          },
+          "fN" : "44",
+          "eT" : "788"
+        }
+      }, {
+        "id" : "74",
+        "duration" : 90,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "CDG",
+          "name" : "Charles De Gaulle Intl Arpt",
+          "city" : "Paris",
+          "cityCode" : "PAR",
+          "country" : "France",
+          "countryCode" : "FR",
+          "terminal" : "Terminal 2C"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 5"
+        },
+        "dt" : "2025-12-10T10:25",
+        "at" : "2025-12-10T10:55",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "BA",
+            "name" : "British Airways",
+            "isLcc" : false
+          },
+          "fN" : "303",
+          "eT" : "32N"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 227135.5,
+              "TAF" : 19565.5,
+              "BF" : 207570.0,
+              "NF" : 227135.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 14319.0,
+                "MF" : 75.0,
+                "OT" : 4596.0,
+                "YR" : 562.0
+              }
+            },
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 1,
+            "cc" : "ECONOMY",
+            "cB" : "E",
+            "fB" : "ELXAOWEF"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_281JFKCPHSK916CPHLHRSK505~14136207554136479",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "67" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "68" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 227135.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "67",
+        "duration" : 455,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 1"
+        },
+        "aa" : {
+          "code" : "CPH",
+          "name" : "Copenhagen Arpt",
+          "city" : "Copenhagen",
+          "cityCode" : "CPH",
+          "country" : "Denmark",
+          "countryCode" : "DK",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-09T17:35",
+        "at" : "2025-12-10T07:10",
+        "cT" : 465,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "SK",
+            "name" : "SAS Scandinavian Airlines",
+            "isLcc" : false
+          },
+          "fN" : "916",
+          "eT" : "333"
+        }
+      }, {
+        "id" : "68",
+        "duration" : 125,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "CPH",
+          "name" : "Copenhagen Arpt",
+          "city" : "Copenhagen",
+          "cityCode" : "CPH",
+          "country" : "Denmark",
+          "countryCode" : "DK",
+          "terminal" : "Terminal 3"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-10T14:55",
+        "at" : "2025-12-10T16:00",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "SK",
+            "name" : "SAS Scandinavian Airlines",
+            "isLcc" : false
+          },
+          "fN" : "505",
+          "eT" : "32N"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 227135.5,
+              "TAF" : 19565.5,
+              "BF" : 207570.0,
+              "NF" : 227135.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 14319.0,
+                "MF" : 75.0,
+                "OT" : 4596.0,
+                "YR" : 562.0
+              }
+            },
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 1,
+            "cc" : "ECONOMY",
+            "cB" : "E",
+            "fB" : "ELXAOWEF"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_282JFKCPHSK916CPHLHRSK1517~14136207554138989",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "341" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "342" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 227135.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "341",
+        "duration" : 455,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 1"
+        },
+        "aa" : {
+          "code" : "CPH",
+          "name" : "Copenhagen Arpt",
+          "city" : "Copenhagen",
+          "cityCode" : "CPH",
+          "country" : "Denmark",
+          "countryCode" : "DK",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-09T17:35",
+        "at" : "2025-12-10T07:10",
+        "cT" : 570,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "SK",
+            "name" : "SAS Scandinavian Airlines",
+            "isLcc" : false
+          },
+          "fN" : "916",
+          "eT" : "333"
+        }
+      }, {
+        "id" : "342",
+        "duration" : 120,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "CPH",
+          "name" : "Copenhagen Arpt",
+          "city" : "Copenhagen",
+          "cityCode" : "CPH",
+          "country" : "Denmark",
+          "countryCode" : "DK",
+          "terminal" : "Terminal 3"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-10T16:40",
+        "at" : "2025-12-10T17:40",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "SK",
+            "name" : "SAS Scandinavian Airlines",
+            "isLcc" : false
+          },
+          "fN" : "1517",
+          "eT" : "32N"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 227135.5,
+              "TAF" : 19565.5,
+              "BF" : 207570.0,
+              "NF" : 227135.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 14319.0,
+                "MF" : 75.0,
+                "OT" : 4596.0,
+                "YR" : 562.0
+              }
+            },
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 1,
+            "cc" : "ECONOMY",
+            "cB" : "E",
+            "fB" : "ELXAOWEF"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_283JFKCPHSK916CPHLHRSK1507~14136207554140990",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "847" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "848" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 227135.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "847",
+        "duration" : 455,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 1"
+        },
+        "aa" : {
+          "code" : "CPH",
+          "name" : "Copenhagen Arpt",
+          "city" : "Copenhagen",
+          "cityCode" : "CPH",
+          "country" : "Denmark",
+          "countryCode" : "DK",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-09T17:35",
+        "at" : "2025-12-10T07:10",
+        "cT" : 620,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "SK",
+            "name" : "SAS Scandinavian Airlines",
+            "isLcc" : false
+          },
+          "fN" : "916",
+          "eT" : "333"
+        }
+      }, {
+        "id" : "848",
+        "duration" : 120,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "CPH",
+          "name" : "Copenhagen Arpt",
+          "city" : "Copenhagen",
+          "cityCode" : "CPH",
+          "country" : "Denmark",
+          "countryCode" : "DK",
+          "terminal" : "Terminal 3"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-10T17:30",
+        "at" : "2025-12-10T18:30",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "SK",
+            "name" : "SAS Scandinavian Airlines",
+            "isLcc" : false
+          },
+          "fN" : "1507",
+          "eT" : "32N"
+        }
+      } ]
+    }, {
+      "totalPriceList" : [ {
+        "fd" : {
+          "ADULT" : {
+            "fC" : {
+              "TF" : 227135.5,
+              "TAF" : 19565.5,
+              "BF" : 207570.0,
+              "NF" : 227135.5
+            },
+            "afC" : {
+              "TAF" : {
+                "MFT" : 13.5,
+                "YQ" : 14319.0,
+                "MF" : 75.0,
+                "OT" : 4596.0,
+                "YR" : 562.0
+              }
+            },
+            "sR" : 9,
+            "bI" : {
+              "iB" : "0 Kg",
+              "cB" : "7 Kg"
+            },
+            "rT" : 1,
+            "cc" : "ECONOMY",
+            "cB" : "E",
+            "fB" : "ELXAOWEF"
+          }
+        },
+        "fareIdentifier" : "PUBLISHED",
+        "id" : "12-15-2-10-1286919933_284JFKCPHSK916CPHLHRSK1501~14136207554143224",
+        "msri" : [ ],
+        "messages" : [ ],
+        "tai" : {
+          "tbi" : {
+            "381" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ],
+            "382" : [ {
+              "ADULT" : {
+                "iB" : "0 Kg",
+                "cB" : "7 Kg"
+              }
+            } ]
+          }
+        },
+        "icca" : true,
+        "totalPrice" : 227135.5
+      } ],
+      "airFlowType" : "SEARCH",
+      "ipm" : "",
+      "issf" : false,
+      "sI" : [ {
+        "id" : "381",
+        "duration" : 455,
+        "stops" : 0,
+        "iand" : true,
+        "isRs" : false,
+        "da" : {
+          "code" : "JFK",
+          "name" : "John F Kennedy Intl",
+          "city" : "New York",
+          "cityCode" : "NYC",
+          "country" : "United States",
+          "countryCode" : "US",
+          "terminal" : "Terminal 1"
+        },
+        "aa" : {
+          "code" : "CPH",
+          "name" : "Copenhagen Arpt",
+          "city" : "Copenhagen",
+          "cityCode" : "CPH",
+          "country" : "Denmark",
+          "countryCode" : "DK",
+          "terminal" : "Terminal 3"
+        },
+        "dt" : "2025-12-09T17:35",
+        "at" : "2025-12-10T07:10",
+        "cT" : 810,
+        "sN" : 0,
+        "fD" : {
+          "aI" : {
+            "code" : "SK",
+            "name" : "SAS Scandinavian Airlines",
+            "isLcc" : false
+          },
+          "fN" : "916",
+          "eT" : "333"
+        }
+      }, {
+        "id" : "382",
+        "duration" : 120,
+        "stops" : 0,
+        "iand" : false,
+        "isRs" : false,
+        "da" : {
+          "code" : "CPH",
+          "name" : "Copenhagen Arpt",
+          "city" : "Copenhagen",
+          "cityCode" : "CPH",
+          "country" : "Denmark",
+          "countryCode" : "DK",
+          "terminal" : "Terminal 3"
+        },
+        "aa" : {
+          "code" : "LHR",
+          "name" : "Heathrow",
+          "city" : "London",
+          "cityCode" : "LON",
+          "country" : "United Kingdom",
+          "countryCode" : "GB",
+          "terminal" : "Terminal 2"
+        },
+        "dt" : "2025-12-10T20:40",
+        "at" : "2025-12-10T21:40",
+        "sN" : 1,
+        "fD" : {
+          "aI" : {
+            "code" : "SK",
+            "name" : "SAS Scandinavian Airlines",
+            "isLcc" : false
+          },
+          "fN" : "1501",
+          "eT" : "32N"
+        }
+      } ]
+    } ]
+  }
+}

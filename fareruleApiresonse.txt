@@ -1,0 +1,46 @@
+{
+    "fareRule": {
+        "JFK-CDG": {
+            "fr": {
+                "DATECHANGE": {
+                    "DEFAULT": {
+                        "amount": 3000.00,
+                        "additionalFee": 100.00,
+                        "policyInfo": "Reissue",
+                        "fcs": {
+                            "CRF": 100.00,
+                            "CRFT": 0.00,
+                            "ARF": 3000.00,
+                            "ARFT": 0.00
+                        }
+                    }
+                },
+                "CANCELLATION": {
+                    "DEFAULT": {
+                        "amount": 3000.00,
+                        "additionalFee": 100.00,
+                        "policyInfo": "cancellation",
+                        "fcs": {
+                            "ACFT": 0.00,
+                            "CCFT": 0.00,
+                            "ACF": 3000.00,
+                            "CCF": 100.00
+                        }
+                    }
+                },
+                "SEAT_CHARGEABLE": {
+                    "DEFAULT": {
+                        "amount": 3000.00,
+                        "additionalFee": 100.00,
+                        "policyInfo": "Chargeable Seat testing"
+                    }
+                }
+            },
+            "tfr": {}
+        }
+    },
+    "status": {
+        "success": true,
+        "httpStatus": 200
+    }
+}
