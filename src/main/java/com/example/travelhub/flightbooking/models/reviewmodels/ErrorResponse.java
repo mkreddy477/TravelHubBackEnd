@@ -60,16 +60,13 @@ public class ErrorResponse {
 			return "ErrorResponse [timestamp=" + timestamp + ", status=" + status + ", error=" + error + ", message="
 					+ message + ", details=" + details + "]";
 		}
-		public ErrorResponse(LocalDateTime timestamp, Integer status, String error, String message,
-				List<String> details) {
-			super();
-			this.timestamp = timestamp;
-			this.status = status;
-			this.error = error;
-			this.message = message;
-			this.details = details;
-		}
 		
-	    
+		  public ErrorResponse(LocalDateTime timestamp, Integer status, String error,
+		  String message, List<String> details) { super(); this.timestamp = timestamp;
+		  this.status = status; this.error = error; this.message = message;
+		 this.details = details; 
+		 
+		
+		  }
 
 }

@@ -18,9 +18,9 @@ public class DateOfBirth {
 	    private Boolean cdobr;
 	    private Boolean idobr;
 
-	public DateOfBirth() {
-		super();
-	}
+		/*
+		 * public DateOfBirth() { super(); }
+		 */
 
 	public Boolean getAdobr() {
 		return adobr;

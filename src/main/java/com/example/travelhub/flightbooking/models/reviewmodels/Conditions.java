@@ -25,9 +25,9 @@ public class Conditions {
 	    private NameLimits anlm;
 	    private Boolean ipa;
 	
-	public Conditions() {
-		super();
-	}
+		/*
+		 * public Conditions() { super(); }
+		 */
 
 	public PassengerConditions getPcs() {
 		return pcs;
