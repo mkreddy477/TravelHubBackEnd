@@ -242,6 +242,32 @@ public class TripjackFlightSearchService {
             FlightOptionDto option = new FlightOptionDto();
             
             if (tripInfo.getSegmentInfos() != null && !tripInfo.getSegmentInfos().isEmpty()) {
+                List<FlightOptionDto.SegmentDto> uiSegments = new ArrayList<>();
+                for (TripjackResponse.SegmentInfo segment : tripInfo.getSegmentInfos()) {
+                    FlightOptionDto.SegmentDto uiSeg = new FlightOptionDto.SegmentDto();
+
+                    if (segment.getDepartureAirport() != null) {
+                        uiSeg.setFrom(segment.getDepartureAirport().getCode());
+                    }
+                    if (segment.getArrivalAirport() != null) {
+                        uiSeg.setTo(segment.getArrivalAirport().getCode());
+                    }
+                    uiSeg.setDeparture(segment.getDepartureTime());
+                    uiSeg.setArrival(segment.getArrivalTime());
+                    uiSeg.setDuration(segment.getDuration());
+
+                    if (segment.getFlightDetails() != null && segment.getFlightDetails().getAirlineInfo() != null) {
+                        uiSeg.setAirlineCode(segment.getFlightDetails().getAirlineInfo().getCode());
+                        uiSeg.setAirlineName(segment.getFlightDetails().getAirlineInfo().getName());
+                    }
+                    if (segment.getFlightDetails() != null) {
+                        uiSeg.setFlightNumber(segment.getFlightDetails().getFlightNumber());
+                    }
+
+                    uiSegments.add(uiSeg);
+                }
+                option.setSegments(uiSegments);
+
                 TripjackResponse.SegmentInfo firstSegment = tripInfo.getSegmentInfos().get(0);
                 TripjackResponse.SegmentInfo lastSegment = 
                     tripInfo.getSegmentInfos().get(tripInfo.getSegmentInfos().size() - 1);

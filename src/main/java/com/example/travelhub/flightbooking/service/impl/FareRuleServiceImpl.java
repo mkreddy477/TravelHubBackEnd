@@ -28,7 +28,7 @@ public class FareRuleServiceImpl implements FareRuleService {
     public FareRuleServiceImpl(
     		WebClient.Builder webClientBuilder,
             @Value("${tripjack.api.base-url}") String baseUrl,
-            @Value("${tripjack.api.farerule-endpoint:/fms/v1/farerule}") String fareRuleEndpoint,
+            @Value("${tripjack.api.fareRuleapi}") String fareRuleEndpoint,
             @Value("${tripjack.api-key}") String apiKey) {
 
         if (apiKey == null || apiKey.isBlank()) {

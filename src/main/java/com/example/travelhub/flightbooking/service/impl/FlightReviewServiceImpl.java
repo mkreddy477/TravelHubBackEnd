@@ -38,7 +38,7 @@ public class FlightReviewServiceImpl implements FlightReviewService {
     public FlightReviewServiceImpl(
             WebClient.Builder webClientBuilder,
             @Value("${tripjack.api.base-url}") String baseUrl,
-            @Value("${tripjack.api.review-endpoint:/fms/v1/review}") String reviewEndpoint,
+            @Value("${tripjack.api.flightsreviewapi}") String reviewEndpoint,
             @Value("${tripjack.api-key}") String apiKey) {
         
         this.reviewApiUrl = reviewEndpoint;
