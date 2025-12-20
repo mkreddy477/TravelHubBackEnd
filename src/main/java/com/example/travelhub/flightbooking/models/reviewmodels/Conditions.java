@@ -24,10 +24,6 @@ public class Conditions {
 	    private DuplicateCheck dc;
 	    private NameLimits anlm;
 	    private Boolean ipa;
-	
-		/*
-		 * public Conditions() { super(); }
-		 */
 
 	public PassengerConditions getPcs() {
 		return pcs;

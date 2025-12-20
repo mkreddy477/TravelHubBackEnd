@@ -32,57 +32,39 @@ public class GlobalExceptionHandler {
             FlightServiceException ex) {
         
         log.error("FlightServiceException occurred: {}", ex.getMessage());
-        
-        ErrorResponse errorResponse = new ErrorResponse(
-                LocalDateTime.now(),
-                ex.getStatusCode(),
-                HttpStatus.valueOf(ex.getStatusCode()).getReasonPhrase(),
-                ex.getMessage(),
-                null);
-        
-        return Mono.just(ResponseEntity
-                .status(ex.getStatusCode())
-                .body(errorResponse));
-    }
+		return null;
+  
 
-    @ExceptionHandler(WebExchangeBindException.class)
-    public Mono<ResponseEntity<ErrorResponse>> handleValidationException(
-            WebExchangeBindException ex) {
-        
-        log.error("Validation error occurred: {}", ex.getMessage());
-        
-        List<String> errors = ex.getBindingResult()
-                .getFieldErrors()
-                .stream()
-                .map(error -> error.getField() + ": " + error.getDefaultMessage())
-                .collect(Collectors.toList());
-        
-        ErrorResponse errorResponse = new ErrorResponse(
-                LocalDateTime.now(),
-                HttpStatus.BAD_REQUEST.value(),
-                "Validation Failed",
-                "Invalid request parameters",
-                errors);
-        
-        return Mono.just(ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(errorResponse));
-    }
-
-    @ExceptionHandler(Exception.class)
-    public Mono<ResponseEntity<ErrorResponse>> handleGenericException(Exception ex) {
-        
-        log.error("Unexpected error occurred: {}", ex.getMessage(), ex);
-        
-        ErrorResponse errorResponse = new ErrorResponse(
-                LocalDateTime.now(),
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Internal Server Error",
-                "An unexpected error occurred",
-                null);
-        
-        return Mono.just(ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(errorResponse));
-    }
+//    @ExceptionHandler(WebExchangeBindException.class)
+//    public Mono<ResponseEntity<ErrorResponse>> handleValidationException(
+//            WebExchangeBindException ex) {
+//        
+//        log.error("Validation error occurred: {}", ex.getMessage());
+//        
+//        List<String> errors = ex.getBindingResult()
+//                .getFieldErrors()
+//                .stream()
+//                .map(error -> error.getField() + ": " + error.getDefaultMessage())
+//                .collect(Collectors.toList());
+//        
+//   
+//    }
+//    @ExceptionHandler(Exception.class)
+//    public Mono<ResponseEntity<ErrorResponse>> handleGenericException(Exception ex) {
+//        
+//        log.error("Unexpected error occurred: {}", ex.getMessage(), ex);
+//        
+//        ErrorResponse errorResponse = new ErrorResponse(
+//                LocalDateTime.now(),
+//                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+//                "Internal Server Error",
+//                "An unexpected error occurred",
+//                null);
+//        
+//        return Mono.just(ResponseEntity
+//                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                .body(errorResponse));
+//    }
 }
+    }
+

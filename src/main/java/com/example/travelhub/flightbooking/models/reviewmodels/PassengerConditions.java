@@ -19,11 +19,6 @@ public class PassengerConditions {
     private Boolean pm;
     private Boolean dobe;
 
-	/*
-	 * public PassengerConditions() {
-	 * 	super();
-	}*/
-
 	public Boolean getPped() {
 		return pped;
 	}

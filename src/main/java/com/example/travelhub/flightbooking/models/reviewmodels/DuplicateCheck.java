@@ -18,10 +18,6 @@ public class DuplicateCheck {
 	    private Boolean idm;
 	    private Boolean iqpe;
 
-		/*
-		 * public DuplicateCheck() { super(); }
-		 */
-
 	public Boolean getIda() {
 		return ida;
 	}
