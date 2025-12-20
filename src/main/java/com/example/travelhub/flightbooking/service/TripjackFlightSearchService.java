@@ -4,16 +4,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.time.Duration;
+import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import reactor.netty.http.client.HttpClient;
+import reactor.netty.resources.ConnectionProvider;
 import com.example.travelhub.config.CorsConfig;
 import com.example.travelhub.flightbooking.models.FlightOptionDto;
 import com.example.travelhub.flightbooking.models.FlightSearchRequest;
 import com.example.travelhub.flightbooking.models.FlightSearchResultGroup;
+
 import com.example.travelhub.flightbooking.models.TripjackMapper;
 import com.example.travelhub.flightbooking.models.TripjackSearchRequest;
 import com.example.travelhub.flightbooking.service.TripjackResponse.TripInfo;
@@ -31,6 +38,8 @@ public class TripjackFlightSearchService {
     private final WebClient webClient;
     private final TripjackMapper mapper;
     private final ObjectMapper objectMapper;
+    private final AtomicLong tripjackHitCount = new AtomicLong(0);
+    private final boolean logTripjack;
 
     public TripjackFlightSearchService(
             WebClient.Builder builder,
@@ -38,16 +47,28 @@ public class TripjackFlightSearchService {
             ObjectMapper objectMapper,
             @Value("${tripjack.base-url}") String baseUrl,
             @Value("${tripjack.api-key}") String apiKey,
+            @Value("${travelhub.debug.log-tripjack:false}") boolean logTripjack,
             CorsConfig corsConfig) {
+
         // Increase buffer size to handle large responses
         ExchangeStrategies strategies = ExchangeStrategies.builder()
             .codecs(configurer -> configurer
                 .defaultCodecs()
                 .maxInMemorySize(10 * 1024 * 1024)) // 10 MB
             .build();
+
+        ConnectionProvider provider = ConnectionProvider.builder("tripjack")
+                .maxConnections(50)
+                .pendingAcquireTimeout(Duration.ofSeconds(60))
+                .build();
+
+        HttpClient httpClient = HttpClient.create(provider)
+                .compress(true)
+                .responseTimeout(Duration.ofSeconds(30));
             
         this.webClient = builder
                 .baseUrl(baseUrl)
+                .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .exchangeStrategies(strategies)
                 .defaultHeader("apikey", apiKey)
                 .defaultHeader("Content-Type", "application/json")
@@ -56,19 +77,25 @@ public class TripjackFlightSearchService {
         this.mapper = mapper;
         this.objectMapper = objectMapper;
         this.corsConfig = corsConfig;
+        this.logTripjack = logTripjack;
     }
 
  public Mono<FlightSearchResultGroup> search(FlightSearchRequest uiReq) {
     TripjackSearchRequest payload = mapper.toTripjackRequest(uiReq);
 
-    try {
-        String json = objectMapper.writeValueAsString(payload);
-        System.out.println("====== Tripjack REQUEST Payload ======");
-        System.out.println(json);
-        System.out.println("======================================");
-    } catch (JsonProcessingException e) {
-        System.err.println("Failed to serialize request: " + e.getMessage());
+    if (logTripjack) {
+        try {
+            String json = objectMapper.writeValueAsString(payload);
+            System.out.println("====== Tripjack REQUEST Payload ======");
+            System.out.println(json);
+            System.out.println("======================================");
+        } catch (JsonProcessingException e) {
+            System.err.println("Failed to serialize request: " + e.getMessage());
+        }
     }
+
+    long tripjackHitNo = tripjackHitCount.incrementAndGet();
+    final long tripjackStartNanos = System.nanoTime();
 
     return webClient.post()
             .uri("/fms/v1/air-search-all")
@@ -81,7 +108,14 @@ public class TripjackFlightSearchService {
                     .map(errorBody -> new IllegalArgumentException("Tripjack API error: " + errorBody))
             )
             .bodyToMono(TripjackResponse.class)
+            .doFinally(signalType -> {
+                long tripjackMs = java.util.concurrent.TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - tripjackStartNanos);
+                System.out.println("Tripjack /fms/v1/air-search-all completed in " + tripjackMs + " ms (signal=" + signalType + ", hit #" + tripjackHitNo + ")");
+            })
             .doOnNext(response -> {
+                if (!logTripjack) {
+                    return;
+                }
                 try {
                     ObjectMapper mapper = new ObjectMapper();
                     mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
@@ -197,27 +231,29 @@ public class TripjackFlightSearchService {
         
         // Combos are usually combinations of onward + return
         result.setCombos(new ArrayList<>());
-        
-        System.out.println("\n====== TRANSFORMATION SUMMARY ======");
-        System.out.println("Onward flights converted: " + result.getOnward().size());
-        System.out.println("Return flights converted: " + result.getReturns().size());
-        
-        if (!result.getOnward().isEmpty()) {
-            FlightOptionDto firstOption = result.getOnward().get(0);
-            System.out.println("\nFirst converted flight:");
-            System.out.println("  From: " + firstOption.getFrom());
-            System.out.println("  To: " + firstOption.getTo());
-            System.out.println("  Departure: " + firstOption.getDeparture());
-            System.out.println("  Arrival: " + firstOption.getArrival());
-            System.out.println("  Duration: " + firstOption.getTotalDurationMinutes() + " mins");
-            System.out.println("  Stops: " + firstOption.getStops());
-            System.out.println("  Price: " + firstOption.getTotalFare());
-            System.out.println("  Airline: " + firstOption.getMarketingAirlineName() + " (" + firstOption.getMarketingAirlineCode() + ")");
-            System.out.println("  Flight#: " + firstOption.getFlightNumber());
-            System.out.println("  Baggage Check-in: " + firstOption.getBaggageCheckIn());
-            System.out.println("  Baggage Cabin: " + firstOption.getBaggageCabin());
+
+        if (logTripjack) {
+            System.out.println("\n====== TRANSFORMATION SUMMARY ======");
+            System.out.println("Onward flights converted: " + result.getOnward().size());
+            System.out.println("Return flights converted: " + result.getReturns().size());
+
+            if (!result.getOnward().isEmpty()) {
+                FlightOptionDto firstOption = result.getOnward().get(0);
+                System.out.println("\nFirst converted flight:");
+                System.out.println("  From: " + firstOption.getFrom());
+                System.out.println("  To: " + firstOption.getTo());
+                System.out.println("  Departure: " + firstOption.getDeparture());
+                System.out.println("  Arrival: " + firstOption.getArrival());
+                System.out.println("  Duration: " + firstOption.getTotalDurationMinutes() + " mins");
+                System.out.println("  Stops: " + firstOption.getStops());
+                System.out.println("  Price: " + firstOption.getTotalFare());
+                System.out.println("  Airline: " + firstOption.getMarketingAirlineName() + " (" + firstOption.getMarketingAirlineCode() + ")");
+                System.out.println("  Flight#: " + firstOption.getFlightNumber());
+                System.out.println("  Baggage Check-in: " + firstOption.getBaggageCheckIn());
+                System.out.println("  Baggage Cabin: " + firstOption.getBaggageCabin());
+            }
+            System.out.println("====================================\n");
         }
-        System.out.println("====================================\n");
         
         return result;
     }
@@ -242,6 +278,32 @@ public class TripjackFlightSearchService {
             FlightOptionDto option = new FlightOptionDto();
             
             if (tripInfo.getSegmentInfos() != null && !tripInfo.getSegmentInfos().isEmpty()) {
+                List<FlightOptionDto.SegmentDto> uiSegments = new ArrayList<>();
+                for (TripjackResponse.SegmentInfo segment : tripInfo.getSegmentInfos()) {
+                    FlightOptionDto.SegmentDto uiSeg = new FlightOptionDto.SegmentDto();
+
+                    if (segment.getDepartureAirport() != null) {
+                        uiSeg.setFrom(segment.getDepartureAirport().getCode());
+                    }
+                    if (segment.getArrivalAirport() != null) {
+                        uiSeg.setTo(segment.getArrivalAirport().getCode());
+                    }
+                    uiSeg.setDeparture(segment.getDepartureTime());
+                    uiSeg.setArrival(segment.getArrivalTime());
+                    uiSeg.setDuration(segment.getDuration());
+
+                    if (segment.getFlightDetails() != null && segment.getFlightDetails().getAirlineInfo() != null) {
+                        uiSeg.setAirlineCode(segment.getFlightDetails().getAirlineInfo().getCode());
+                        uiSeg.setAirlineName(segment.getFlightDetails().getAirlineInfo().getName());
+                    }
+                    if (segment.getFlightDetails() != null) {
+                        uiSeg.setFlightNumber(segment.getFlightDetails().getFlightNumber());
+                    }
+
+                    uiSegments.add(uiSeg);
+                }
+                option.setSegments(uiSegments);
+
                 TripjackResponse.SegmentInfo firstSegment = tripInfo.getSegmentInfos().get(0);
                 TripjackResponse.SegmentInfo lastSegment = 
                     tripInfo.getSegmentInfos().get(tripInfo.getSegmentInfos().size() - 1);

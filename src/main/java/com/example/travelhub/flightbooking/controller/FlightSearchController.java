@@ -1,5 +1,10 @@
 package com.example.travelhub.flightbooking.controller;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,17 +24,38 @@ import reactor.core.publisher.Mono;
 public class FlightSearchController {
 
     private final TripjackFlightSearchService searchService;
+    private final AtomicLong searchHitCount = new AtomicLong(0);
+    private final boolean dumpSearchResponse;
 
-    public FlightSearchController(TripjackFlightSearchService searchService) {
+    public FlightSearchController(
+            TripjackFlightSearchService searchService,
+            @Value("${travelhub.debug.dump-search-response:false}") boolean dumpSearchResponse) {
         this.searchService = searchService;
+        this.dumpSearchResponse = dumpSearchResponse;
     }
 
     @PostMapping("/search")
-    public Mono<FlightSearchResultGroup> search(@RequestBody FlightSearchRequest request) throws JsonProcessingException {
-        System.out.println("Incoming UI request: " + request);
+    public Mono<FlightSearchResultGroup> search(@RequestBody FlightSearchRequest request, ServerHttpResponse response) throws JsonProcessingException {
+        long hitNo = searchHitCount.incrementAndGet();
+        System.out.println("Incoming UI request (hit #" + hitNo + "): " + request);
+
+        final long startNanos = System.nanoTime();
+        AtomicLong durationMs = new AtomicLong(-1);
+
+        response.beforeCommit(() -> {
+            long ms = durationMs.get();
+            if (ms >= 0) {
+                response.getHeaders().set("X-Response-Time-Ms", String.valueOf(ms));
+            }
+            response.getHeaders().set("X-Search-Hit-Count", String.valueOf(hitNo));
+            return Mono.empty();
+        });
 
         return searchService.search(request)
                 .doOnNext(result -> {
+                    if (!dumpSearchResponse) {
+                        return;
+                    }
                     try {
                         ObjectMapper mapper = new ObjectMapper();
                         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
@@ -54,7 +80,11 @@ public class FlightSearchController {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                })
+                .doOnTerminate(() -> {
+                    long ms = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
+                    durationMs.set(ms);
+                    System.out.println("/api/flights/search completed in " + ms + " ms");
                 });
-        
     }
 }

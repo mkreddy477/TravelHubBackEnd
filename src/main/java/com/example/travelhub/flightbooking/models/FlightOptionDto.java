@@ -2,6 +2,7 @@ package com.example.travelhub.flightbooking.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class FlightOptionDto {
 
@@ -24,6 +25,86 @@ public class FlightOptionDto {
     private String baggageCheckIn;
     private String baggageCabin;
     private boolean refundable;
+
+    private List<SegmentDto> segments;
+
+    public static class SegmentDto {
+        private String from;
+        private String to;
+        private String departure;
+        private String arrival;
+        private Integer duration;
+        private String airlineCode;
+        private String airlineName;
+        private String flightNumber;
+
+        public SegmentDto() {
+        }
+
+        public String getFrom() {
+            return from;
+        }
+
+        public void setFrom(String from) {
+            this.from = from;
+        }
+
+        public String getTo() {
+            return to;
+        }
+
+        public void setTo(String to) {
+            this.to = to;
+        }
+
+        public String getDeparture() {
+            return departure;
+        }
+
+        public void setDeparture(String departure) {
+            this.departure = departure;
+        }
+
+        public String getArrival() {
+            return arrival;
+        }
+
+        public void setArrival(String arrival) {
+            this.arrival = arrival;
+        }
+
+        public Integer getDuration() {
+            return duration;
+        }
+
+        public void setDuration(Integer duration) {
+            this.duration = duration;
+        }
+
+        public String getAirlineCode() {
+            return airlineCode;
+        }
+
+        public void setAirlineCode(String airlineCode) {
+            this.airlineCode = airlineCode;
+        }
+
+        public String getAirlineName() {
+            return airlineName;
+        }
+
+        public void setAirlineName(String airlineName) {
+            this.airlineName = airlineName;
+        }
+
+        public String getFlightNumber() {
+            return flightNumber;
+        }
+
+        public void setFlightNumber(String flightNumber) {
+            this.flightNumber = flightNumber;
+        }
+    }
 
     public FlightOptionDto(String priceId, String direction, String from, String to, String departure, String arrival,
 			int totalDurationMinutes, int stops, String marketingAirlineCode, String marketingAirlineName,
@@ -204,6 +285,14 @@ public class FlightOptionDto {
 
 	public void setRefundable(boolean refundable) {
 		this.refundable = refundable;
+	}
+
+	public List<SegmentDto> getSegments() {
+		return segments;
+	}
+
+	public void setSegments(List<SegmentDto> segments) {
+		this.segments = segments;
 	}
 
 	@Override
