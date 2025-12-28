@@ -299,12 +299,12 @@ public class BookingEmailBuilder {
         builder.passengers(passengers);
         
         // Set price info
-        if (request.getPaymentInfos() != null && !request.getPaymentInfos().isEmpty()) {
-            Number amount = request.getPaymentInfos().get(0).getAmount();
-            if (amount != null) {
-                builder.totalFare(BigDecimal.valueOf(amount.doubleValue()));
-            }
-        }
+//        if (request.getPaymentInfos() != null && !request.getPaymentInfos().isEmpty()) {
+//            Number amount = request.getPaymentInfos().get(0).getAmount();
+//            if (amount != null) {
+//                builder.totalFare(BigDecimal.valueOf(amount.doubleValue()));
+//            }
+//        }
         builder.currency("INR");
         
         // Set recipient info

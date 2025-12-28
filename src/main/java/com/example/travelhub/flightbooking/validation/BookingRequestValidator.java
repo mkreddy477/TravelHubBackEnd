@@ -25,6 +25,14 @@ public class BookingRequestValidator {
     private static final Pattern NAME_PATTERN = Pattern.compile("^[A-Za-z\\s]{2,50}$");
     private static final Pattern PASSPORT_PATTERN = Pattern.compile("^[A-Z0-9]{6,12}$");
     private static final Pattern COUNTRY_CODE_PATTERN = Pattern.compile("^[A-Z]{2}$");
+    private static final Pattern BOOKING_ID_PATTERN = Pattern.compile("^TJ[A-Z0-9]{10,20}$");
+    
+    // Common test/fake names that TripJack will reject
+    private static final String[] INVALID_TEST_NAMES = {
+        "abc", "xyz", "test", "demo", "sample", "dummy", "fake", "asdf", "qwerty",
+        "aaa", "bbb", "ccc", "xxx", "yyy", "zzz", "name", "first", "last",
+        "firstname", "lastname", "user", "guest", "traveller", "passenger"
+    };
 
     /**
      * Validate the booking request and return a list of validation errors.
@@ -36,10 +44,40 @@ public class BookingRequestValidator {
         // Validate bookingId
         if (request.getBookingId() == null || request.getBookingId().trim().isEmpty()) {
             errors.add("bookingId is required");
+        } else if (!BOOKING_ID_PATTERN.matcher(request.getBookingId().trim()).matches()) {
+            errors.add("bookingId format is invalid. Must start with 'TJ' followed by 10-20 alphanumeric characters");
         }
 
         // Validate paymentInfos
         errors.addAll(validatePaymentInfos(request.getPaymentInfos()));
+
+        // Validate deliveryInfo
+        errors.addAll(validateDeliveryInfo(request.getDeliveryInfo()));
+
+        // Validate contactInfo
+        errors.addAll(validateContactInfo(request.getContactInfo()));
+
+        // Validate travellerInfo
+        errors.addAll(validateTravellerInfos(request.getTravellerInfo()));
+
+        return errors;
+    }
+
+    /**
+     * Validate the booking request for HOLD booking (no payment required).
+     * Returns an empty list if validation passes.
+     */
+    public List<String> validateForHold(BookingRequest request) {
+        List<String> errors = new ArrayList<>();
+
+        // Validate bookingId
+        if (request.getBookingId() == null || request.getBookingId().trim().isEmpty()) {
+            errors.add("bookingId is required");
+        } else if (!BOOKING_ID_PATTERN.matcher(request.getBookingId().trim()).matches()) {
+            errors.add("bookingId format is invalid. Must start with 'TJ' followed by 10-20 alphanumeric characters");
+        }
+
+        // Skip paymentInfos validation for hold booking
 
         // Validate deliveryInfo
         errors.addAll(validateDeliveryInfo(request.getDeliveryInfo()));
@@ -176,6 +214,8 @@ public class BookingRequestValidator {
                 errors.add(prefix + ".fN (first name) must be at least 2 characters");
             } else if (!NAME_PATTERN.matcher(traveller.getfN()).matches()) {
                 errors.add(prefix + ".fN (first name) must contain only letters and spaces (2-50 characters)");
+            } else if (isInvalidTestName(traveller.getfN())) {
+                errors.add(prefix + ".fN (first name) '" + traveller.getfN() + "' appears to be test/fake data. Please use a real name");
             }
 
             // Validate last name
@@ -185,6 +225,8 @@ public class BookingRequestValidator {
                 errors.add(prefix + ".lN (last name) must be at least 2 characters");
             } else if (!NAME_PATTERN.matcher(traveller.getlN()).matches()) {
                 errors.add(prefix + ".lN (last name) must contain only letters and spaces (2-50 characters)");
+            } else if (isInvalidTestName(traveller.getlN())) {
+                errors.add(prefix + ".lN (last name) '" + traveller.getlN() + "' appears to be test/fake data. Please use a real name");
             }
 
             // Validate date of birth
@@ -256,5 +298,25 @@ public class BookingRequestValidator {
             default:
                 return false;
         }
+    }
+
+    /**
+     * Check if the given name is a common test/fake name that TripJack will reject.
+     */
+    private boolean isInvalidTestName(String name) {
+        if (name == null) {
+            return false;
+        }
+        String lowerName = name.trim().toLowerCase();
+        for (String invalidName : INVALID_TEST_NAMES) {
+            if (lowerName.equals(invalidName)) {
+                return true;
+            }
+        }
+        // Also check for repeated characters like "aaa", "bbb", etc.
+        if (lowerName.length() >= 2 && lowerName.chars().distinct().count() == 1) {
+            return true;
+        }
+        return false;
     }
 }

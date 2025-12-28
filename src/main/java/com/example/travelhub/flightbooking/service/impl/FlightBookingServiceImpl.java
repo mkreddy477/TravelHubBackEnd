@@ -32,6 +32,7 @@ import com.example.travelhub.flightbooking.models.bookingmodels.FareValidateResp
 import com.example.travelhub.flightbooking.models.bookingmodels.ReleasePnrRequest;
 import com.example.travelhub.flightbooking.models.bookingmodels.ReleasePnrResponse;
 import com.example.travelhub.flightbooking.service.FlightBookingService;
+import com.example.travelhub.flightbooking.service.BookingDatabaseService;
 
 import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
@@ -50,6 +51,7 @@ public class FlightBookingServiceImpl implements FlightBookingService {
     private final ConfirmBookRequestValidator confirmBookRequestValidator;
     private final EmailService emailService;
     private final BookingEmailBuilder bookingEmailBuilder;
+    private final BookingDatabaseService bookingDatabaseService;
     private final WebClient webClient;
     private final String bookApiUrl;
     private final String fareValidateUrl;
@@ -62,6 +64,7 @@ public class FlightBookingServiceImpl implements FlightBookingService {
             ConfirmBookRequestValidator confirmBookRequestValidator,
             EmailService emailService,
             BookingEmailBuilder bookingEmailBuilder,
+            BookingDatabaseService bookingDatabaseService,
             WebClient.Builder webClientBuilder,
             @Value("${tripjack.api.base-url}") String baseUrl,
             @Value("${tripjack.api.book-endpoint:/oms/v1/air/book}") String bookEndpoint,
@@ -75,6 +78,7 @@ public class FlightBookingServiceImpl implements FlightBookingService {
         this.confirmBookRequestValidator = confirmBookRequestValidator;
         this.emailService = emailService;
         this.bookingEmailBuilder = bookingEmailBuilder;
+        this.bookingDatabaseService = bookingDatabaseService;
         
         this.bookApiUrl = bookEndpoint;
         this.fareValidateUrl = fareValidateEndpoint;
@@ -153,7 +157,7 @@ public class FlightBookingServiceImpl implements FlightBookingService {
                         log.warn("Retrying flight booking request. Attempt: {}", retrySignal.totalRetries() + 1)
                     )
                 )
-                .doOnSuccess(response -> {
+                .flatMap(response -> {
                     log.info("Successfully completed flight booking. BookingId: {}, Status: {}", 
                         response.getBookingId(), response.getStatus());
                     
@@ -165,8 +169,20 @@ public class FlightBookingServiceImpl implements FlightBookingService {
                         log.warn("Could not serialize response for logging", e);
                     }
                     
-                    // Send booking confirmation email asynchronously
-                    sendBookingConfirmationEmail(bookingRequest, response);
+                    // Save booking data to database asynchronously
+                    return bookingDatabaseService.saveBookingData(bookingRequest, response)
+                            .doOnSuccess(savedBooking -> 
+                                log.info("Booking data saved to database. BookingDetailId: {}", savedBooking.getBookingDetailId())
+                            )
+                            .doOnError(dbError -> 
+                                log.error("Failed to save booking data to database: {}", dbError.getMessage())
+                            )
+                            .onErrorResume(dbError -> Mono.empty()) // Don't fail booking if DB save fails
+                            .thenReturn(response)
+                            .doOnSuccess(r -> {
+                                // Send booking confirmation email asynchronously
+                                sendBookingConfirmationEmail(bookingRequest, response);
+                            });
                 })
                 .doOnError(error -> 
                     log.error("Error during flight booking: {}", error.getMessage(), error)
@@ -186,10 +202,19 @@ public class FlightBookingServiceImpl implements FlightBookingService {
 
     @Override
     public Mono<BookingResponse> holdBooking(BookingRequest bookingRequest) {
-        log.info("Processing hold booking for bookingId: {}", bookingRequest.getBookingId());
+        // Validate request before sending to TripJack (skip payment validation for hold)
+        bookingRequest.setPaymentInfos(null); // Ensure paymentInfos is null for hold booking
+        List<String> validationErrors = bookingRequestValidator.validateForHold(bookingRequest);
+        if (!validationErrors.isEmpty()) {
+            String errorMessage = "Hold booking request validation failed: " + String.join("; ", validationErrors);
+            log.error(errorMessage);
+            return Mono.error(new FlightServiceException(errorMessage, 400));
+        }
         
-        // Ensure paymentInfos is null for hold booking
-        bookingRequest.setPaymentInfos(null);
+        // Clean passport fields if incomplete (missing pid) - TripJack rejects incomplete passport info
+        cleanIncompletePassportInfo(bookingRequest);
+        
+        log.info("Processing hold booking for bookingId: {}", bookingRequest.getBookingId());
         
         return webClient
                 .post()
@@ -513,6 +538,8 @@ public class FlightBookingServiceImpl implements FlightBookingService {
                 traveller.setpNum(null);
                 traveller.setpNat(null);
                 traveller.seteD(null);
+                traveller.setPid(null);
+                traveller.setDi(null);
             }
         }
     }

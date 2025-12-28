@@ -106,9 +106,15 @@ public class FlightBookingController {
         produces = MediaType.APPLICATION_JSON_VALUE
     )
     public Mono<ResponseEntity<BookingResponse>> holdBooking(
-            @Valid @RequestBody BookingRequest bookingRequest) {
+             @RequestBody BookingRequest bookingRequest) {
         
         log.info("Received hold booking request for bookingId: {}", bookingRequest.getBookingId());
+        log.info("=== HOLD BOOKING ENDPOINT HIT ===");
+        log.info("Received hold booking request for bookingId: {}", bookingRequest.getBookingId());
+        log.info("Full BookingRequest: {}", bookingRequest);
+        log.info("TravellerInfo count: {}", bookingRequest.getTravellerInfo() != null ? bookingRequest.getTravellerInfo().size() : 0);
+        log.info("DeliveryInfo: {}", bookingRequest.getDeliveryInfo());
+        log.info("ContactInfo: {}", bookingRequest.getContactInfo());
         
         return flightBookingService.holdBooking(bookingRequest)
                 .map(response -> ResponseEntity.ok()
@@ -247,7 +253,9 @@ public class FlightBookingController {
                 .defaultIfEmpty(ResponseEntity.notFound().build())
                 .doOnSuccess(response -> 
                     log.info("Release PNR request completed successfully")
+                    
                 )
+                
                 .doOnError(error -> 
                     log.error("Release PNR request failed: {}", error.getMessage())
                 );

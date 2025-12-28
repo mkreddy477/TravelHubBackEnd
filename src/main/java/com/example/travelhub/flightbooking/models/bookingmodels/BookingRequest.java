@@ -88,6 +88,12 @@ public class BookingRequest {
 
     @Override
     public String toString() {
-        return "BookingRequest{bookingId='" + bookingId + "', travellerInfo=" + travellerInfo + '}';
+        return "BookingRequest{" +
+                "bookingId='" + bookingId + '\'' +
+                ", deliveryInfo=" + deliveryInfo +
+                ", contactInfo=" + contactInfo +
+                ", travellerInfo=" + travellerInfo +
+                ", gstInfo=" + gstInfo +
+                '}';
     }
 }

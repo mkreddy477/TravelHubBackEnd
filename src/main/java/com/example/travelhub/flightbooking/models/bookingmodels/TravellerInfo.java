@@ -36,7 +36,9 @@ public class TravellerInfo {
     private ExpiryDate eD;  // Passport Expiry Date (month/year object)
     @JsonProperty("pNat")
     private String pNat; // Passport Nationality (2-letter IATA code)
+    @JsonProperty("pid")
     private String pid; // Passport Issue Date (YYYY-MM-DD)
+    @JsonProperty("di")
     private String di;  // Document ID
     
     private List<SsrInfo> ssrBaggageInfos;
