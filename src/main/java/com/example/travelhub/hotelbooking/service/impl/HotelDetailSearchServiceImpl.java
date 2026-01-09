@@ -1,4 +1,4 @@
-package com.example.travelhub.hotelbooking.service;
+package com.example.travelhub.hotelbooking.service.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.travelhub.hotelbooking.models.HotelDetailResponse;
 import com.example.travelhub.hotelbooking.models.HotelOperationRequest;
+import com.example.travelhub.hotelbooking.service.HotelDetailSearchService;
 
 import reactor.core.publisher.Mono;
 
@@ -15,7 +16,7 @@ public class HotelDetailSearchServiceImpl implements HotelDetailSearchService {
     private final WebClient webClient;
     private final String apiKey;
 
-    public HotelDetailSearchService(
+    public HotelDetailSearchServiceImpl(
             WebClient.Builder webClientBuilder,
             @Value("${hotel.api.base-url}") String baseUrl,
             @Value("${hotel.api.key}") String apiKey) {

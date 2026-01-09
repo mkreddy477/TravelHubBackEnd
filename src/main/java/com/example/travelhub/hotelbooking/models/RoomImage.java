@@ -1,26 +1,37 @@
 package com.example.travelhub.hotelbooking.models;
 
-public class RoomArea {
+import java.util.List;
+
+public class RoomImage {
     
-    private String asm;
-    private String asf;
+    private String url;
+    private String sz;
+    private List<String> rids;
     
-    public RoomArea() {
+    public RoomImage() {
     }
     
-    public String getAsm() {
-        return asm;
+    public String getUrl() {
+        return url;
     }
     
-    public void setAsm(String asm) {
-        this.asm = asm;
+    public void setUrl(String url) {
+        this.url = url;
     }
     
-    public String getAsf() {
-        return asf;
+    public String getSz() {
+        return sz;
     }
     
-    public void setAsf(String asf) {
-        this.asf = asf;
+    public void setSz(String sz) {
+        this.sz = sz;
+    }
+    
+    public List<String> getRids() {
+        return rids;
+    }
+    
+    public void setRids(List<String> rids) {
+        this.rids = rids;
     }
 }

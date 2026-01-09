@@ -9,6 +9,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.MediaType;
+import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.stereotype.Service;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
@@ -40,21 +42,28 @@ public class TripjackFlightSearchService {
     private final ObjectMapper objectMapper;
     private final AtomicLong tripjackHitCount = new AtomicLong(0);
     private final boolean logTripjack;
+    private final boolean useMockData;
+    private final MockTripjackDataService mockDataService;
 
     public TripjackFlightSearchService(
-            WebClient.Builder builder,
             TripjackMapper mapper,
             ObjectMapper objectMapper,
             @Value("${tripjack.base-url}") String baseUrl,
             @Value("${tripjack.api-key}") String apiKey,
             @Value("${travelhub.debug.log-tripjack:false}") boolean logTripjack,
+            @Value("${travelhub.mock.enabled:false}") boolean useMockData,
+            MockTripjackDataService mockDataService,
             CorsConfig corsConfig) {
 
-        // Increase buffer size to handle large responses
+        // Configure Jackson decoder to accept application/octet-stream as JSON
+        // (TripJack API returns octet-stream content type instead of application/json)
         ExchangeStrategies strategies = ExchangeStrategies.builder()
-            .codecs(configurer -> configurer
-                .defaultCodecs()
-                .maxInMemorySize(10 * 1024 * 1024)) // 10 MB
+            .codecs(configurer -> {
+                configurer.defaultCodecs().maxInMemorySize(10 * 1024 * 1024); // 10 MB
+                configurer.defaultCodecs().jackson2JsonDecoder(
+                    new Jackson2JsonDecoder(objectMapper, MediaType.APPLICATION_JSON, MediaType.APPLICATION_OCTET_STREAM)
+                );
+            })
             .build();
 
         ConnectionProvider provider = ConnectionProvider.builder("tripjack")
@@ -66,7 +75,9 @@ public class TripjackFlightSearchService {
                 .compress(true)
                 .responseTimeout(Duration.ofSeconds(30));
             
-        this.webClient = builder
+        // Use WebClient.builder() directly instead of injected builder to avoid
+        // any interference from WebClientCustomizer
+        this.webClient = WebClient.builder()
                 .baseUrl(baseUrl)
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .exchangeStrategies(strategies)
@@ -78,11 +89,25 @@ public class TripjackFlightSearchService {
         this.objectMapper = objectMapper;
         this.corsConfig = corsConfig;
         this.logTripjack = logTripjack;
+        this.useMockData = useMockData;
+        this.mockDataService = mockDataService;
+        
+        if (useMockData) {
+            System.out.println("\n========================================");
+            System.out.println("  MOCK MODE ENABLED - Using mock data");
+            System.out.println("  TripJack API will NOT be called");
+            System.out.println("========================================\n");
+        }
     }
 
  public Mono<FlightSearchResultGroup> search(FlightSearchRequest uiReq) {
+    // Check if mock mode is enabled
+    if (useMockData) {
+        return searchWithMockData(uiReq);
+    }
+    
     TripjackSearchRequest payload = mapper.toTripjackRequest(uiReq);
-
+  System.out.println("search flights");
     if (logTripjack) {
         try {
             String json = objectMapper.writeValueAsString(payload);
@@ -409,5 +434,31 @@ public class TripjackFlightSearchService {
         }
         
         return options;
+    }
+
+    /**
+     * Search using mock data instead of calling TripJack API.
+     * This is useful for testing when TripJack test server is unavailable.
+     */
+    private Mono<FlightSearchResultGroup> searchWithMockData(FlightSearchRequest uiReq) {
+        System.out.println("====== MOCK MODE: Generating mock flight data ======");
+        System.out.println("Route: " + uiReq.getOrigin() + " -> " + uiReq.getDestination());
+        System.out.println("Date: " + uiReq.getDepartureDate());
+        System.out.println("Trip Type: " + uiReq.getTripType());
+        
+        final long startNanos = System.nanoTime();
+        
+        return Mono.fromCallable(() -> {
+            TripjackResponse mockResponse = mockDataService.generateMockResponse(uiReq);
+            return transformToFlightSearchResultGroup(mockResponse);
+        })
+        .doOnNext(result -> {
+            long ms = java.util.concurrent.TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
+            System.out.println("====== MOCK DATA GENERATED ======");
+            System.out.println("Onward flights: " + (result.getOnward() != null ? result.getOnward().size() : 0));
+            System.out.println("Return flights: " + (result.getReturns() != null ? result.getReturns().size() : 0));
+            System.out.println("Generated in " + ms + " ms");
+            System.out.println("=================================");
+        });
     }
 }

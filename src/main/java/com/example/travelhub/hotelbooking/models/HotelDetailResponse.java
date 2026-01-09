@@ -1,26 +1,17 @@
 package com.example.travelhub.hotelbooking.models;
 
-public class RoomArea {
+public class HotelDetailResponse {
     
-    private String asm;
-    private String asf;
+    private Hotel hotel;
     
-    public RoomArea() {
+    public HotelDetailResponse() {
     }
     
-    public String getAsm() {
-        return asm;
+    public Hotel getHotel() {
+        return hotel;
     }
     
-    public void setAsm(String asm) {
-        this.asm = asm;
-    }
-    
-    public String getAsf() {
-        return asf;
-    }
-    
-    public void setAsf(String asf) {
-        this.asf = asf;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 }

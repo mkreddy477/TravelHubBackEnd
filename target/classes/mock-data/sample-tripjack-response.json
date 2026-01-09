@@ -1,0 +1,67 @@
+{
+  "status": {
+    "success": true,
+    "httpStatus": 200
+  },
+  "searchQuery": {
+    "cabinClass": "ECONOMY",
+    "paxInfo": { "ADULT": "1", "CHILD": "0", "INFANT": "0" }
+  },
+  "searchResult": {
+    "tripInfos": {
+      "ONWARD": [
+        {
+          "sI": [
+            {
+              "id": "101",
+              "da": {
+                "code": "DEL",
+                "name": "Indira Gandhi International Airport",
+                "city": "Delhi",
+                "cityCode": "DEL",
+                "country": "India",
+                "countryCode": "IN",
+                "terminal": "T3"
+              },
+              "aa": {
+                "code": "BOM",
+                "name": "Chhatrapati Shivaji Maharaj International Airport",
+                "city": "Mumbai",
+                "cityCode": "BOM",
+                "country": "India",
+                "countryCode": "IN",
+                "terminal": "T2"
+              },
+              "dt": "2025-01-15T06:30:00",
+              "at": "2025-01-15T08:40:00",
+              "duration": 130,
+              "stops": 0,
+              "fD": {
+                "aI": { "code": "6E", "name": "IndiGo", "isLcc": true },
+                "fN": "234",
+                "eT": "Airbus A320neo"
+              }
+            }
+          ],
+          "totalPriceList": [
+            {
+              "fd": {
+                "ADULT": {
+                  "fC": { "BF": 4500.00, "TAF": 810.00, "NF": 5310.00, "TF": 5310.00 },
+                  "bI": { "iB": "15 Kg", "cB": "7 Kg" },
+                  "sR": 9,
+                  "cc": "ECONOMY",
+                  "cB": "E"
+                }
+              },
+              "fareIdentifier": "PUBLISHED",
+              "id": "1-2-0-5-DELBOM6E234~1736899800000",
+              "icca": false
+            }
+          ],
+          "airFlowType": "SEARCH"
+        }
+      ]
+    }
+  }
+}

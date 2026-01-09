@@ -1,4 +1,4 @@
-package com.example.travelhub.hotelbooking.service;
+package com.example.travelhub.hotelbooking.service.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.travelhub.hotelbooking.models.HotelSearchRequest;
 import com.example.travelhub.hotelbooking.models.HotelSearchResponse;
+import com.example.travelhub.hotelbooking.service.HotelSearchService;
 
 import reactor.core.publisher.Mono;
 

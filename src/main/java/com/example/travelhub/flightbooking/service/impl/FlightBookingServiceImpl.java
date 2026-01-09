@@ -11,7 +11,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
+import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
@@ -81,8 +83,21 @@ public class FlightBookingServiceImpl implements FlightBookingService {
         this.confirmBookUrl = confirmBookEndpoint;
         this.bookingDetailsUrl = bookingDetailsEndpoint;
         this.unholdUrl = unholdEndpoint;
+        
+        // Configure Jackson decoder to accept application/octet-stream as JSON
+        // (TripJack API sometimes returns octet-stream content type)
+        ExchangeStrategies strategies = ExchangeStrategies.builder()
+            .codecs(configurer -> {
+                configurer.defaultCodecs().maxInMemorySize(10 * 1024 * 1024); // 10 MB
+                configurer.defaultCodecs().jackson2JsonDecoder(
+                    new Jackson2JsonDecoder(objectMapper, MediaType.APPLICATION_JSON, MediaType.APPLICATION_OCTET_STREAM)
+                );
+            })
+            .build();
+        
         this.webClient = webClientBuilder
                 .baseUrl(baseUrl)
+                .exchangeStrategies(strategies)
                 .defaultHeader("apikey", apiKey)
                 .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                 .build();

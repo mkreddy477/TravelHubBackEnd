@@ -1,10 +1,11 @@
-package com.example.travelhub.hotelbooking.service;
+package com.example.travelhub.hotelbooking.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.travelhub.hotelbooking.models.CancellationPolicyResponse;
 import com.example.travelhub.hotelbooking.models.HotelOperationRequest;
+import com.example.travelhub.hotelbooking.service.HotelCancellationPolicyService;
 
 import reactor.core.publisher.Mono;
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.travelhub.hotelbooking.models.HotelDetailResponse;
 import com.example.travelhub.hotelbooking.models.HotelOperationRequest;
-import com.example.travelhub.hotelbooking.service.HotelDetailService;
+import com.example.travelhub.hotelbooking.service.HotelDetailSearchService;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,12 +23,12 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/hotels")
 public class HotelDetailController {
 
-    private final HotelDetailService detailService;
+    private final HotelDetailSearchService detailService;
     private final AtomicLong detailHitCount = new AtomicLong(0);
     private final boolean dumpDetailResponse;
 
     public HotelDetailController(
-            HotelDetailService detailService,
+    		HotelDetailSearchService detailService,
             @Value("${travelhub.debug.dump-detail-response:false}") boolean dumpDetailResponse) {
         this.detailService = detailService;
         this.dumpDetailResponse = dumpDetailResponse;
