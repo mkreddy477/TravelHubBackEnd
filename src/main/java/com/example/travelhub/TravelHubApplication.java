@@ -15,9 +15,11 @@ public class TravelHubApplication {
     public static void main(String[] args) throws SQLException {
         SpringApplication.run(TravelHubApplication.class, args);
         // YOUR SQL SERVER CONNECTION URL
+        // Option A: SQL Server Authentication (username/password)
         String url = "jdbc:sqlserver://localhost;" +
                 "databaseName=TravelHub;" +
-                "integratedSecurity=true;" +
+                "user=sa;" +
+                "password=Travelhub@123;" +
                 "encrypt=true;" +
                 "trustServerCertificate=true;";
         System.out.println("Testing connection to: " + url);
