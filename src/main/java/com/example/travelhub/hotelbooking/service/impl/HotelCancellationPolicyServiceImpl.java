@@ -20,8 +20,7 @@ public class HotelCancellationPolicyServiceImpl implements HotelCancellationPoli
 
     @Override
     public Mono<CancellationPolicyResponse> getCancellationPolicy(HotelOperationRequest request) {
-        System.out.println("Fetching cancellation policy for Hotel ID: " + request.getId() 
-                + ", Option ID: " + request.getOptionId());
+       
         
         return webClient.post()
                 .uri("/api/v1/cancellation-policy")

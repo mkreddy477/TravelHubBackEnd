@@ -1,11 +1,19 @@
 package com.example.travelhub.hotelbooking.models;
 
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RoomInfo {
     
+	@NotNull
+    @Min(1)
     private int numberOfAdults;
+	
     private int numberOfChild;
+    
     private List<Integer> childAge;
     
     public RoomInfo() {

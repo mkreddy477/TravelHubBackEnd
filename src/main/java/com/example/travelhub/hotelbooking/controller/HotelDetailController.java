@@ -70,15 +70,7 @@ public class HotelDetailController {
                             java.nio.charset.StandardCharsets.UTF_8
                         );
                         
-                        System.out.println("====== Final Detail Response to UI ======");
-                        System.out.println("Response written to: hotel-detail-ui-response-output.json");
-                        System.out.println("Hotel ID: " + (result.getHotel() != null ? result.getHotel().getId() : "N/A"));
-                        System.out.println("Hotel Name: " + (result.getHotel() != null ? result.getHotel().getName() : "N/A"));
-                        System.out.println("Options available: " + (result.getHotel() != null && result.getHotel().getOps() != null 
-                                ? result.getHotel().getOps().size() : 0));
-                        System.out.println("Response size: " + uiResponse.length() + " characters");
-                        System.out.println("==========================================");
-                        System.out.println("=====================" + uiResponse);
+                     
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -86,7 +78,6 @@ public class HotelDetailController {
                 .doOnTerminate(() -> {
                     long ms = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNanos);
                     durationMs.set(ms);
-                    System.out.println("/api/hotels/detail completed in " + ms + " ms");
                 });
     }
 }

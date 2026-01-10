@@ -2,10 +2,17 @@ package com.example.travelhub.hotelbooking.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.validation.constraints.NotNull;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SearchPreferences {
     
     private List<Integer> ratings;
+    
+    @NotNull
     private List<String> hids;
+    
     private boolean fsc;
     
     public SearchPreferences() {

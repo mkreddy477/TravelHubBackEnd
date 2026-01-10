@@ -26,9 +26,7 @@ public class HotelSearchServiceImpl implements HotelSearchService {
             ObjectMapper objectMapper,
             @Value("${hotel.api.search-url}") String baseUrl,
             @Value("${hotel.api.key}") String apiKey) {
-        
-        // Configure Jackson decoder to accept application/octet-stream as JSON
-        // (TripJack API returns octet-stream content type instead of application/json)
+    
         ExchangeStrategies strategies = ExchangeStrategies.builder()
             .codecs(configurer -> {
                 configurer.defaultCodecs().maxInMemorySize(10 * 1024 * 1024); // 10 MB
@@ -43,44 +41,24 @@ public class HotelSearchServiceImpl implements HotelSearchService {
             .exchangeStrategies(strategies)
             .build();
         this.apiKey = apiKey;
-        // Create a copy of ObjectMapper configured to ignore unknown properties
         this.objectMapper = objectMapper.copy()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     @Override
     public Mono<HotelSearchResponse> search(HotelSearchRequest request) {
-        System.out.println("Initiating hotel search request");
-        System.out.println("  - Check-in: " + (request.getSearchQuery() != null 
-                ? request.getSearchQuery().getCheckinDate() : "N/A"));
-        System.out.println("  - Check-out: " + (request.getSearchQuery() != null 
-                ? request.getSearchQuery().getCheckoutDate() : "N/A"));
-        System.out.println("  - Rooms: " + (request.getSearchQuery() != null 
-                && request.getSearchQuery().getRoomInfo() != null 
-                ? request.getSearchQuery().getRoomInfo().size() : 0));
-        System.out.println("  - Sync: " + request.isSync());
-        
-        // Log the request being sent
-        try {
-            String requestJson = objectMapper.writeValueAsString(request);
-            System.out.println("=== REQUEST TO TRIPJACK ===");
-            System.out.println(requestJson);
-            System.out.println("=== END REQUEST ===");
-        } catch (Exception e) {
-            System.err.println("Error serializing request: " + e.getMessage());
-        }
+     
+       
         
         return webClient.post()
-                .uri("/search")
+                .uri("")
                 .header("apikey", apiKey)
                 .header("Content-Type", "application/json")
                 .bodyValue(request)
                 .retrieve()
                 .bodyToMono(String.class)
                 .doOnNext(rawResponse -> {
-                    System.out.println("=== RAW TRIPJACK HOTEL RESPONSE ===");
                     System.out.println(rawResponse.substring(0, Math.min(2000, rawResponse.length())));
-                    System.out.println("=== END RAW RESPONSE ===");
                 })
                 .flatMap(rawResponse -> {
                     try {

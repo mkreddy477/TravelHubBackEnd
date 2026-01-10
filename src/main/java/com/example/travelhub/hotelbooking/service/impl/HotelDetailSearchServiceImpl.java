@@ -48,7 +48,7 @@ public class HotelDetailSearchServiceImpl implements HotelDetailSearchService {
         System.out.println("Fetching hotel details for Hotel ID: " + request.getId());
         
         return webClient.post()
-                .uri("/detail")
+                .uri("")
                 .header("Authorization", "Bearer " + apiKey)
                 .header("Content-Type", "application/json")
                 .bodyValue(request)
@@ -57,13 +57,7 @@ public class HotelDetailSearchServiceImpl implements HotelDetailSearchService {
                 .doOnSuccess(response -> {
                     System.out.println("Successfully fetched hotel details");
                     if (response.getHotel() != null) {
-                        System.out.println("  - Hotel ID: " + response.getHotel().getId());
-                        System.out.println("  - Hotel Name: " + response.getHotel().getName());
-                        System.out.println("  - Rating: " + response.getHotel().getRt());
-                        System.out.println("  - Property Type: " + response.getHotel().getPt());
-                        System.out.println("  - Options available: " + 
-                            (response.getHotel().getOps() != null 
-                                ? response.getHotel().getOps().size() : 0));
+                      
                         System.out.println("  - Instructions: " + 
                             (response.getHotel().getInst() != null 
                                 ? response.getHotel().getInst().size() : 0));

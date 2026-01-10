@@ -70,15 +70,7 @@ public class HotelSearchController {
                             java.nio.charset.StandardCharsets.UTF_8
                         );
                         
-                        System.out.println("====== Final Response to UI ======");
-                        System.out.println("Response written to: hotel-ui-response-output.json");
-                        System.out.println("Hotels found: " + (result.getSearchResult() != null && result.getSearchResult().getHis() != null 
-                                ? result.getSearchResult().getHis().size() : 0));
-                        System.out.println("Total size: " + (result.getSearchResult() != null 
-                                ? result.getSearchResult().getSize() : 0));
-                        System.out.println("Response size: " + uiResponse.length() + " characters");
-                        System.out.println("==================================");
-                        System.out.println("=====================" + uiResponse);
+                        
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
