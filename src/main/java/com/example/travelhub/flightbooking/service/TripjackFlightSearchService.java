@@ -9,6 +9,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.MediaType;
+import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.stereotype.Service;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
@@ -42,7 +44,6 @@ public class TripjackFlightSearchService {
     private final boolean logTripjack;
 
     public TripjackFlightSearchService(
-            WebClient.Builder builder,
             TripjackMapper mapper,
             ObjectMapper objectMapper,
             @Value("${tripjack.base-url}") String baseUrl,
@@ -50,11 +51,15 @@ public class TripjackFlightSearchService {
             @Value("${travelhub.debug.log-tripjack:false}") boolean logTripjack,
             CorsConfig corsConfig) {
 
-        // Increase buffer size to handle large responses
+        // Configure Jackson decoder to accept application/octet-stream as JSON
+        // (TripJack API returns octet-stream content type instead of application/json)
         ExchangeStrategies strategies = ExchangeStrategies.builder()
-            .codecs(configurer -> configurer
-                .defaultCodecs()
-                .maxInMemorySize(10 * 1024 * 1024)) // 10 MB
+            .codecs(configurer -> {
+                configurer.defaultCodecs().maxInMemorySize(10 * 1024 * 1024); // 10 MB
+                configurer.defaultCodecs().jackson2JsonDecoder(
+                    new Jackson2JsonDecoder(objectMapper, MediaType.APPLICATION_JSON, MediaType.APPLICATION_OCTET_STREAM)
+                );
+            })
             .build();
 
         ConnectionProvider provider = ConnectionProvider.builder("tripjack")
@@ -66,7 +71,7 @@ public class TripjackFlightSearchService {
                 .compress(true)
                 .responseTimeout(Duration.ofSeconds(30));
             
-        this.webClient = builder
+        this.webClient = WebClient.builder()
                 .baseUrl(baseUrl)
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .exchangeStrategies(strategies)
@@ -107,7 +112,40 @@ public class TripjackFlightSearchService {
                     .doOnNext(errorBody -> System.err.println("Tripjack validation error: " + errorBody))
                     .map(errorBody -> new IllegalArgumentException("Tripjack API error: " + errorBody))
             )
-            .bodyToMono(TripjackResponse.class)
+            .bodyToMono(String.class)
+            .flatMap(rawResponse -> {
+                try {
+                    // Print raw response for debugging
+                    System.out.println("====== RAW TRIPJACK API RESPONSE ======");
+                    System.out.println(rawResponse);
+                    System.out.println("========================================");
+                    
+                    // Write raw response to file
+                    java.nio.file.Files.writeString(
+                        java.nio.file.Paths.get("tripjack-raw-response.json"),
+                        rawResponse,
+                        java.nio.charset.StandardCharsets.UTF_8
+                    );
+                    System.out.println("Raw response written to: tripjack-raw-response.json");
+                    
+                    TripjackResponse response = objectMapper.readValue(rawResponse, TripjackResponse.class);
+                    
+                    // Debug parsed response
+                    System.out.println("====== PARSED TRIPJACK RESPONSE ======");
+                    System.out.println("Status: " + (response.getStatus() != null ? response.getStatus().isSuccess() : "null"));
+                    System.out.println("SearchResult: " + (response.getSearchResult() != null ? "exists" : "null"));
+                    if (response.getSearchResult() != null) {
+                        System.out.println("TripInfos: " + (response.getSearchResult().getTripInfos() != null ? response.getSearchResult().getTripInfos().keySet() : "null"));
+                    }
+                    System.out.println("=======================================");
+                    
+                    return Mono.just(response);
+                } catch (Exception e) {
+                    System.err.println("Error parsing TripJack response: " + e.getMessage());
+                    e.printStackTrace();
+                    return Mono.error(e);
+                }
+            })
             .doFinally(signalType -> {
                 long tripjackMs = java.util.concurrent.TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - tripjackStartNanos);
                 System.out.println("Tripjack /fms/v1/air-search-all completed in " + tripjackMs + " ms (signal=" + signalType + ", hit #" + tripjackHitNo + ")");

@@ -53,9 +53,12 @@ public class FlightSearchController {
 
         return searchService.search(request)
                 .doOnNext(result -> {
-                    if (!dumpSearchResponse) {
-                        return;
-                    }
+                    // Always print response summary
+                    System.out.println("====== RESPONSE TO FRONTEND ======");
+                    System.out.println("Onward flights count: " + (result.getOnward() != null ? result.getOnward().size() : 0));
+                    System.out.println("Return flights count: " + (result.getReturns() != null ? result.getReturns().size() : 0));
+                    System.out.println("Combos count: " + (result.getCombos() != null ? result.getCombos().size() : 0));
+                    
                     try {
                         ObjectMapper mapper = new ObjectMapper();
                         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
@@ -63,20 +66,17 @@ public class FlightSearchController {
                         String uiResponse = mapper.writerWithDefaultPrettyPrinter()
                                 .writeValueAsString(result);
 
+                        System.out.println("Full JSON response:");
+                        System.out.println(uiResponse);
+                        
                         // Write to file for debugging
                         java.nio.file.Files.writeString(
                             java.nio.file.Paths.get("ui-response-output.json"),
                             uiResponse,
                             java.nio.charset.StandardCharsets.UTF_8
                         );
-                        	
-                        System.out.println("====== Final Response to UI ======");
-                        System.out.println("Response written to: ui-response-output.json");
-                        System.out.println("Onward flights: " + (result.getOnward() != null ? result.getOnward().size() : 0));
-                        System.out.println("Return flights: " + (result.getReturns() != null ? result.getReturns().size() : 0));
-                        System.out.println("Response size: " + uiResponse.length() + " characters");
+                        System.out.println("Response also written to: ui-response-output.json");
                         System.out.println("==================================");
-                        System.out.println("====================="+uiResponse);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
