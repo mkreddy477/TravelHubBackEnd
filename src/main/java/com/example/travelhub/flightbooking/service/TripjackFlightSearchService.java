@@ -88,15 +88,21 @@ public class TripjackFlightSearchService {
  public Mono<FlightSearchResultGroup> search(FlightSearchRequest uiReq) {
     TripjackSearchRequest payload = mapper.toTripjackRequest(uiReq);
 
-    if (logTripjack) {
-        try {
-            String json = objectMapper.writeValueAsString(payload);
-            System.out.println("====== Tripjack REQUEST Payload ======");
-            System.out.println(json);
-            System.out.println("======================================");
-        } catch (JsonProcessingException e) {
-            System.err.println("Failed to serialize request: " + e.getMessage());
-        }
+    // Always log request payload for debugging
+    try {
+        String json = objectMapper.writeValueAsString(payload);
+        System.out.println("====== Tripjack REQUEST Payload ======");
+        System.out.println(json);
+        System.out.println("======================================");
+        
+        // Write to file for easier inspection
+        java.nio.file.Files.writeString(
+            java.nio.file.Paths.get("tripjack-request.json"),
+            json,
+            java.nio.charset.StandardCharsets.UTF_8
+        );
+    } catch (Exception e) {
+        System.err.println("Failed to serialize request: " + e.getMessage());
     }
 
     long tripjackHitNo = tripjackHitCount.incrementAndGet();

@@ -9,9 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
+import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.example.travelhub.flightbooking.exception.FlightServiceException;
 import com.example.travelhub.flightbooking.exception.GlobalExceptionHandler;
@@ -34,21 +38,35 @@ public class FlightReviewServiceImpl implements FlightReviewService {
 
     private final WebClient webClient;
     private final String reviewApiUrl;
+    private final ObjectMapper objectMapper;
 
     public FlightReviewServiceImpl(
-            WebClient.Builder webClientBuilder,
+            ObjectMapper objectMapper,
             @Value("${tripjack.api.base-url}") String baseUrl,
             @Value("${tripjack.api.flightsreviewapi}") String reviewEndpoint,
             @Value("${tripjack.api-key}") String apiKey) {
         
         this.reviewApiUrl = reviewEndpoint;
-        this.webClient = webClientBuilder
+        this.objectMapper = objectMapper;
+        
+        // Configure Jackson decoder to accept application/octet-stream as JSON
+        ExchangeStrategies strategies = ExchangeStrategies.builder()
+            .codecs(configurer -> {
+                configurer.defaultCodecs().maxInMemorySize(10 * 1024 * 1024);
+                configurer.defaultCodecs().jackson2JsonDecoder(
+                    new Jackson2JsonDecoder(objectMapper, MediaType.APPLICATION_JSON, MediaType.APPLICATION_OCTET_STREAM)
+                );
+            })
+            .build();
+        
+        this.webClient = WebClient.builder()
                 .baseUrl(baseUrl)
+                .exchangeStrategies(strategies)
                 .defaultHeader("apikey", apiKey)
                 .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                 .build();
         
-        log.info("FlightReviewService initialized with base URL: {}", baseUrl);
+        log.info("FlightReviewService initialized with base URL: {} and review endpoint: {}", baseUrl, reviewEndpoint);
     }
 
     @Override

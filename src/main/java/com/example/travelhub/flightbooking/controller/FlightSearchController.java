@@ -37,7 +37,15 @@ public class FlightSearchController {
     @PostMapping("/search")
     public Mono<FlightSearchResultGroup> search(@RequestBody FlightSearchRequest request, ServerHttpResponse response) throws JsonProcessingException {
         long hitNo = searchHitCount.incrementAndGet();
-        System.out.println("Incoming UI request (hit #" + hitNo + "): " + request);
+        System.out.println("====== INCOMING UI REQUEST (hit #" + hitNo + ") ======");
+        System.out.println("TripType: " + request.getTripType());
+        System.out.println("Origin: " + request.getOrigin());
+        System.out.println("Destination: " + request.getDestination());
+        System.out.println("DepartureDate: " + request.getDepartureDate());
+        System.out.println("ReturnDate: " + request.getReturnDate());
+        System.out.println("Passengers: " + request.getPassengers());
+        System.out.println("TravelClass: " + request.getTravelClass());
+        System.out.println("=================================================");
 
         final long startNanos = System.nanoTime();
         AtomicLong durationMs = new AtomicLong(-1);
