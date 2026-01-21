@@ -6,10 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.event.EventListener;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 
 @SpringBootApplication
+@EnableCaching
 public class TravelHubApplication {
 
     public static void main(String[] args) throws SQLException {
@@ -52,5 +59,22 @@ public class TravelHubApplication {
             System.out.println("4. Network/firewall blocking port 1433");
         }
 
+    }
+
+    @Slf4j
+    @Component
+    public static class StartupLogger {
+        
+        private final Environment environment;
+        
+        public StartupLogger(Environment environment) {
+            this.environment = environment;
+        }
+        
+        @EventListener(ApplicationReadyEvent.class)
+        public void onApplicationReady() {
+            String port = environment.getProperty("server.port", "8080");
+            
+                  }
     }
 }
