@@ -19,6 +19,10 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.FileSystemResource;
+import java.io.InputStream;
 
 @Slf4j
 @Repository
@@ -49,18 +53,36 @@ public class FileBasedLocationRepository implements LocationRepository {
     public void loadData() {
         log.info("Loading hotel data from file: {}", filePath);
         try {
-            File file = new File(filePath);
-            if (!file.exists()) {
-                log.error("Hotel data file not found: {}", filePath);
-                throw new RuntimeException("Hotel data file not found: " + filePath);
+            InputStream inputStream;
+            
+            // Check if it's a classpath resource
+            if (filePath.startsWith("classpath:")) {
+                String resourcePath = filePath.substring("classpath:".length());
+                Resource resource = new ClassPathResource(resourcePath);
+                if (!resource.exists()) {
+                    log.error("Hotel data file not found: {}", filePath);
+                    throw new RuntimeException("Hotel data file not found: " + filePath);
+                }
+                inputStream = resource.getInputStream();
+            } else {
+                // Regular file path
+                File file = new File(filePath);
+                if (!file.exists()) {
+                    log.error("Hotel data file not found: {}", filePath);
+                    throw new RuntimeException("Hotel data file not found: " + filePath);
+                }
+                inputStream = new FileSystemResource(file).getInputStream();
             }
 
-            HotelData hotelData = objectMapper.readValue(file, HotelData.class);
+            HotelData hotelData = objectMapper.readValue(inputStream, HotelData.class);
             buildIndexes(hotelData);
             lastLoadedAt = LocalDateTime.now();
             
             log.info("Successfully loaded {} locations with {} hotels", 
                     locationIndex.size(), getTotalHotels());
+                    
+            inputStream.close(); // Close the stream
+            
         } catch (IOException e) {
             log.error("Error loading hotel data from file", e);
             throw new RuntimeException("Failed to load hotel data", e);

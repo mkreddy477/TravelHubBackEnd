@@ -39,6 +39,14 @@ public class LocationService {
                 .totalCount(results.size())
                 .build();
     }
+    
+    /**
+     * Get hotel IDs for a location (used by HotelSearchService)
+     */
+    public List<String> getHotelIdsByLocation(String locationId, Integer minRating) {
+        log.debug("Getting hotel IDs for location: {}, minRating: {}", locationId, minRating);
+        return locationRepository.getHotelIdsByLocation(locationId, minRating);
+    }
 
     public LocationHotelsResponse getHotelsByLocation(String locationId, Integer minRating) {
         log.debug("Getting hotels for location: {}, minRating: {}", locationId, minRating);
