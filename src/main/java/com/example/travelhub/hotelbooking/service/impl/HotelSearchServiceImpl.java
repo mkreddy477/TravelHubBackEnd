@@ -16,6 +16,7 @@ import com.example.travelhub.locationservice.service.LocationService;  // ✅ AD
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.example.travelhub.hotelbooking.service.HotelEnrichmentService;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
@@ -33,10 +34,12 @@ public class HotelSearchServiceImpl implements HotelSearchService {
     private final String apiKey;
     private final ObjectMapper objectMapper;
     private final LocationService locationService;  // ✅ ADD THIS
+    private final HotelEnrichmentService enrichmentService;
 
     public HotelSearchServiceImpl(
             ObjectMapper objectMapper,
-            LocationService locationService,  // ✅ ADD THIS
+            LocationService locationService,
+			HotelEnrichmentService enrichmentService,
             @Value("${hotel.api.search-url}") String baseUrl,
             @Value("${hotel.api.key}") String apiKey) {
     
@@ -57,6 +60,28 @@ public class HotelSearchServiceImpl implements HotelSearchService {
         this.locationService = locationService;  // ✅ ADD THIS
         this.objectMapper = objectMapper.copy()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+	
+	@Override
+    public Mono<HotelSearchResponse> search(HotelSearchRequest request) {
+        log.info("Searching hotels for location: {}, check-in: {}, check-out: {}",
+                request.getLocationId(),
+                request.getCheckInDate(),
+                request.getCheckOutDate());
+
+        return getHotelIds(request.getLocationId(), request.getMinRating())
+                .flatMap(hotelIds -> {
+                    if (hotelIds.isEmpty()) {
+                        log.warn("No hotels found for location: {}", request.getLocationId());
+                        return Mono.just(createEmptyResponse());
+                    }
+
+                    log.info("Found {} hotels for location {}", hotelIds.size(), request.getLocationId());
+                    TripJackSearchRequest tripJackRequest = buildTripJackRequest(request, hotelIds);
+                    
+                    return callTripJackApi(tripJackRequest);
+                })
+                .map(response -> enrichmentService.enrichWithStaticData(response));  // ✅ ENRICH HERE
     }
 
     @Override
