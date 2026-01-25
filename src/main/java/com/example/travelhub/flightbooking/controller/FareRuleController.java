@@ -10,19 +10,23 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.travelhub.flightbooking.models.farerulemodels.FareRuleRequest;
 import com.example.travelhub.flightbooking.service.FareRuleService;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import jakarta.validation.Valid;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/api/v1/flights")
+@RequestMapping({"/api/v1/flights", "/api/flights"})
 public class FareRuleController {
 
     private final FareRuleService fareRuleService;
+    private final ObjectMapper objectMapper;
 
-    public FareRuleController(FareRuleService fareRuleService) {
+    public FareRuleController(FareRuleService fareRuleService, ObjectMapper objectMapper) {
         super();
         this.fareRuleService = fareRuleService;
+        this.objectMapper = objectMapper;
     }
 
     @PostMapping(
@@ -35,6 +39,13 @@ public class FareRuleController {
     	
     	return fareRuleService
                 .getFareRule(request)
-                .map(body -> ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(body));
+                .map(body -> {
+                    ObjectNode wrapper = objectMapper.createObjectNode();
+                    wrapper.set("fareRule", body);
+                    return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(wrapper);
+                })
+                .defaultIfEmpty(ResponseEntity.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(objectMapper.createObjectNode().putNull("fareRule")));
     }
 }

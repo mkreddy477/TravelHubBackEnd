@@ -19,6 +19,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.netty.http.client.HttpClient;
 import reactor.netty.resources.ConnectionProvider;
 import com.example.travelhub.config.CorsConfig;
+import com.example.travelhub.flightbooking.exception.FlightServiceException;
 import com.example.travelhub.flightbooking.models.FlightOptionDto;
 import com.example.travelhub.flightbooking.models.FlightSearchRequest;
 import com.example.travelhub.flightbooking.models.FlightSearchResultGroup;
@@ -31,6 +32,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import reactor.core.publisher.Mono;
+import reactor.netty.http.client.PrematureCloseException;
+import java.net.UnknownHostException;
+import java.util.concurrent.TimeoutException;
 
 @Service
 public class TripjackFlightSearchService {
@@ -151,6 +155,34 @@ public class TripjackFlightSearchService {
                     e.printStackTrace();
                     return Mono.error(e);
                 }
+            })
+            .onErrorMap(throwable -> {
+                Throwable root = throwable;
+                while (root.getCause() != null && root.getCause() != root) {
+                    root = root.getCause();
+                }
+
+                if (root instanceof UnknownHostException) {
+                    return new FlightServiceException("Tripjack host could not be resolved", 503, throwable);
+                }
+                if (root instanceof TimeoutException) {
+                    return new FlightServiceException("Tripjack request timed out", 504, throwable);
+                }
+                if (root instanceof PrematureCloseException) {
+                    return new FlightServiceException("Tripjack connection was closed unexpectedly", 503, throwable);
+                }
+
+                // If it's already a controlled exception, keep it as-is
+                if (throwable instanceof FlightServiceException) {
+                    return throwable;
+                }
+
+                // Generic network/client error fallback
+                if (throwable instanceof org.springframework.web.reactive.function.client.WebClientRequestException) {
+                    return new FlightServiceException("Unable to reach Tripjack service", 503, throwable);
+                }
+
+                return throwable;
             })
             .doFinally(signalType -> {
                 long tripjackMs = java.util.concurrent.TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - tripjackStartNanos);

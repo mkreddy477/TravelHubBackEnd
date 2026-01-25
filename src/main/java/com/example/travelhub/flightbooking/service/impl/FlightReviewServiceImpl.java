@@ -3,6 +3,7 @@ package com.example.travelhub.flightbooking.service.impl;
 
 
 import java.time.Duration;
+import java.util.concurrent.TimeoutException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,12 +14,13 @@ import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientRequestException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
+import org.springframework.core.codec.DecodingException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.example.travelhub.flightbooking.exception.FlightServiceException;
-import com.example.travelhub.flightbooking.exception.GlobalExceptionHandler;
 import com.example.travelhub.flightbooking.models.reviewmodels.ReviewRequest;
 import com.example.travelhub.flightbooking.models.reviewmodels.ReviewResponse;
 import com.example.travelhub.flightbooking.service.FlightReviewService;
@@ -33,7 +35,7 @@ import reactor.util.retry.Retry;
 @Slf4j
 @Service
 public class FlightReviewServiceImpl implements FlightReviewService {
-    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(FlightReviewServiceImpl.class);
 
 
     private final WebClient webClient;
@@ -104,7 +106,24 @@ public class FlightReviewServiceImpl implements FlightReviewService {
                 .bodyToMono(ReviewResponse.class)
                 .timeout(Duration.ofSeconds(30))
                 .retryWhen(Retry.backoff(3, Duration.ofSeconds(2))
-                    .filter(throwable -> !(throwable instanceof WebClientResponseException.BadRequest))
+                    .filter(throwable -> {
+                        if (throwable instanceof DecodingException) {
+                            return false;
+                        }
+                        if (throwable instanceof FlightServiceException fse) {
+                            return fse.getStatusCode() >= 500;
+                        }
+                        if (throwable instanceof WebClientResponseException wcre) {
+                            return wcre.getStatusCode().is5xxServerError();
+                        }
+                        if (throwable instanceof TimeoutException) {
+                            return true;
+                        }
+                        if (throwable instanceof WebClientRequestException) {
+                            return true;
+                        }
+                        return false;
+                    })
                     .doBeforeRetry(retrySignal -> 
                         log.warn("Retrying flight review request. Attempt: {}", retrySignal.totalRetries() + 1)
                     )
@@ -121,7 +140,8 @@ public class FlightReviewServiceImpl implements FlightReviewService {
                     }
                     return new FlightServiceException(
                         "Unexpected error during flight review: " + throwable.getMessage(),
-                        500
+                        500,
+                        throwable
                     );
                 });
     }

@@ -26,7 +26,7 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/flights")
+@RequestMapping({"/api/v1/flights", "/api/flights"})
 public class FlightReviewController {
     private static final Logger log = LoggerFactory.getLogger(FlightReviewController.class);
 
