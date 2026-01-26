@@ -11,6 +11,14 @@ public class HotelOperationRequest {
     
     private String optionId;
     
+    @JsonProperty("checkinDate")
+    @JsonAlias("checkInDate")  // Accepts both formats from frontend
+    private String checkInDate;
+    
+    @JsonProperty("checkoutDate")
+    @JsonAlias("checkOutDate")  // Accepts both formats from frontend
+    private String checkOutDate;
+    
     public HotelOperationRequest() {
     }
     
@@ -28,5 +36,21 @@ public class HotelOperationRequest {
     
     public void setOptionId(String optionId) {
         this.optionId = optionId;
+    }
+    
+    public String getCheckInDate() {
+        return checkInDate;
+    }
+    
+    public void setCheckInDate(String checkInDate) {
+        this.checkInDate = checkInDate;
+    }
+    
+    public String getCheckOutDate() {
+        return checkOutDate;
+    }
+    
+    public void setCheckOutDate(String checkOutDate) {
+        this.checkOutDate = checkOutDate;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.travelhub.hotelbooking.service.impl;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -11,6 +12,7 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class HotelCancellationPolicyServiceImpl implements HotelCancellationPolicyService {
+	@Value("${hotel.api.cancellation.policy.url}") String baseUrl;
 
     private final WebClient webClient;
 
@@ -23,7 +25,7 @@ public class HotelCancellationPolicyServiceImpl implements HotelCancellationPoli
        
         
         return webClient.post()
-                .uri("/api/v1/cancellation-policy")
+                .uri(baseUrl)
                 .bodyValue(request)
                 .retrieve()
                 .bodyToMono(CancellationPolicyResponse.class)

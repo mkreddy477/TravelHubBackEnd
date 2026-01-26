@@ -1,56 +1,73 @@
 package com.example.travelhub.hotelbooking.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Address {
     
-    private String adr;
-    private String adr2;
+    @JsonProperty("adr")
+    private String adr; // Street address
+    
+    @JsonProperty("adr2")
+    private String adr2; // Additional address info
+    
+    @JsonProperty("postalCode")
     private String postalCode;
-    private String ctn;
-    private String cn;
     
-    public Address() {
+    @JsonProperty("ctn")
+    private String ctn; // City name (flat field)
+    
+    @JsonProperty("cn")
+    private String cn; // Country name (flat field)
+    
+    @JsonProperty("city")
+    private City city; // City object from TripJack
+    
+    @JsonProperty("state")
+    private State state; // State object from TripJack
+    
+    @JsonProperty("country")
+    private Country country; // Country object from TripJack
+    
+    @JsonProperty("countryCode")
+    private String countryCode; // Country code
+    
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class City {
+        @JsonProperty("name")
+        private String name;
     }
     
-    public String getAdr() {
-        return adr;
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class State {
+        @JsonProperty("name")
+        private String name;
     }
     
-    public void setAdr(String adr) {
-        this.adr = adr;
-    }
-    
-    public String getAdr2() {
-        return adr2;
-    }
-    
-    public void setAdr2(String adr2) {
-        this.adr2 = adr2;
-    }
-    
-    public String getPostalCode() {
-        return postalCode;
-    }
-    
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-    
-    public String getCtn() {
-        return ctn;
-    }
-    
-    public void setCtn(String ctn) {
-        this.ctn = ctn;
-    }
-    
-    public String getCn() {
-        return cn;
-    }
-    
-    public void setCn(String cn) {
-        this.cn = cn;
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Country {
+        @JsonProperty("name")
+        private String name;
     }
 }

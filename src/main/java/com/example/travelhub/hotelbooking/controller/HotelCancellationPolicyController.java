@@ -79,9 +79,9 @@ public class HotelCancellationPolicyController {
                         System.out.println("Policy ID: " + (result.getCancellationPolicy() != null 
                                 ? result.getCancellationPolicy().getId() : "N/A"));
                         System.out.println("Is Refundable: " + (result.getCancellationPolicy() != null 
-                                ? result.getCancellationPolicy().isIfr() : "N/A"));
+                                ? result.getCancellationPolicy().isIfra() : "N/A"));
                         System.out.println("No Refund: " + (result.getCancellationPolicy() != null 
-                                ? result.getCancellationPolicy().isInr() : "N/A"));
+                                ? result.getCancellationPolicy().isInra() : "N/A"));
                         System.out.println("Penalty Details: " + (result.getCancellationPolicy() != null 
                                 && result.getCancellationPolicy().getPd() != null 
                                 ? result.getCancellationPolicy().getPd().size() : 0));

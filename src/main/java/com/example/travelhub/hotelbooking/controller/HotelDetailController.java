@@ -37,7 +37,11 @@ public class HotelDetailController {
     @PostMapping("/detail")
     public Mono<HotelDetailResponse> detail(@RequestBody HotelOperationRequest request, ServerHttpResponse response) throws JsonProcessingException {
         long hitNo = detailHitCount.incrementAndGet();
-        System.out.println("Incoming hotel detail request (hit #" + hitNo + "): Hotel ID: " + request.getId());
+        System.out.println("Incoming hotel detail request (hit #" + hitNo + "):");
+        System.out.println("  - Hotel ID: " + request.getId());
+        System.out.println("  - Option ID: " + request.getOptionId());
+        System.out.println("  - Check-in: " + request.getCheckInDate());
+        System.out.println("  - Check-out: " + request.getCheckOutDate());
 
         final long startNanos = System.nanoTime();
         AtomicLong durationMs = new AtomicLong(-1);
