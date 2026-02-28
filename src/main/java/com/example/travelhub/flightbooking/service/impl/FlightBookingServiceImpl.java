@@ -1,7 +1,10 @@
 package com.example.travelhub.flightbooking.service.impl;
 
+import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.List;
+import java.util.zip.CRC32;
+import java.nio.charset.StandardCharsets;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +19,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import com.example.travelhub.flightbooking.exception.FlightServiceException;
+import com.example.travelhub.flightbooking.dao.IFlightBookingDao;
 import com.example.travelhub.flightbooking.email.BookingConfirmationEmail;
 import com.example.travelhub.flightbooking.email.BookingEmailBuilder;
 import com.example.travelhub.flightbooking.email.EmailService;
@@ -34,6 +38,7 @@ import com.example.travelhub.flightbooking.models.bookingmodels.ReleasePnrRespon
 import com.example.travelhub.flightbooking.service.FlightBookingService;
 
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 import reactor.util.retry.Retry;
 
 /**
@@ -48,6 +53,7 @@ public class FlightBookingServiceImpl implements FlightBookingService {
 
     private final BookingRequestValidator bookingRequestValidator;
     private final ConfirmBookRequestValidator confirmBookRequestValidator;
+    private final IFlightBookingDao flightBookingDao;
     private final EmailService emailService;
     private final BookingEmailBuilder bookingEmailBuilder;
     private final WebClient webClient;
@@ -60,6 +66,7 @@ public class FlightBookingServiceImpl implements FlightBookingService {
     public FlightBookingServiceImpl(
             BookingRequestValidator bookingRequestValidator,
             ConfirmBookRequestValidator confirmBookRequestValidator,
+            IFlightBookingDao flightBookingDao,
             EmailService emailService,
             BookingEmailBuilder bookingEmailBuilder,
             WebClient.Builder webClientBuilder,
@@ -73,6 +80,7 @@ public class FlightBookingServiceImpl implements FlightBookingService {
         
         this.bookingRequestValidator = bookingRequestValidator;
         this.confirmBookRequestValidator = confirmBookRequestValidator;
+        this.flightBookingDao = flightBookingDao;
         this.emailService = emailService;
         this.bookingEmailBuilder = bookingEmailBuilder;
         
@@ -98,6 +106,13 @@ public class FlightBookingServiceImpl implements FlightBookingService {
             String errorMessage = "Booking request validation failed: " + String.join("; ", validationErrors);
             log.error(errorMessage);
             return Mono.error(new FlightServiceException(errorMessage, 400));
+        }
+
+        try {
+            String requestJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(bookingRequest);
+            log.info("Incoming booking request payload:\n{}", requestJson);
+        } catch (Exception e) {
+            log.warn("Failed to serialize booking request for logging: {}", e.getMessage());
         }
         
         // Clean passport fields if incomplete (missing pid) - TripJack rejects incomplete passport info
@@ -153,20 +168,62 @@ public class FlightBookingServiceImpl implements FlightBookingService {
                         log.warn("Retrying flight booking request. Attempt: {}", retrySignal.totalRetries() + 1)
                     )
                 )
-                .doOnSuccess(response -> {
-                    log.info("Successfully completed flight booking. BookingId: {}, Status: {}", 
-                        response.getBookingId(), response.getStatus());
-                    
-                    // Log full response for debugging email issues
-                    try {
-                        String jsonResponse = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response);
-                        log.info("Full booking response: {}", jsonResponse);
-                    } catch (JsonProcessingException e) {
-                        log.warn("Could not serialize response for logging", e);
+                .flatMap(response -> {
+                    final BigDecimal totalAmount = (bookingRequest.getPaymentInfos() != null
+                            && !bookingRequest.getPaymentInfos().isEmpty()
+                            && bookingRequest.getPaymentInfos().get(0).getAmount() != null)
+                                    ? BigDecimal.valueOf(bookingRequest.getPaymentInfos().get(0).getAmount().doubleValue())
+                                    : BigDecimal.ZERO;
+
+                    if (bookingRequest.getBookingDetailId() == null && bookingRequest.getBookingId() != null) {
+                        Long generatedBookingDetailId = generateBookingDetailId(bookingRequest.getBookingId());
+                        bookingRequest.setBookingDetailId(generatedBookingDetailId);
+                        log.info("bookingDetailId not provided. Generated surrogate bookingDetailId={} from bookingId={} for DB persistence.",
+                                generatedBookingDetailId, bookingRequest.getBookingId());
                     }
-                    
-                    // Send booking confirmation email asynchronously
-                    sendBookingConfirmationEmail(bookingRequest, response);
+
+                    if (bookingRequest.getBookingDetailId() == null) {
+                        log.warn("Skipping DB persistence for /book because bookingDetailId is missing and could not be generated (bookingId is null). paymentMethodId={}, paymentStatusId={}",
+                                bookingRequest.getPaymentMethodId(),
+                                bookingRequest.getPaymentStatusId());
+
+                        return Mono.just(response)
+                                .doOnSuccess(r -> {
+                                    log.info("Successfully completed flight booking. BookingId: {}, Status: {}",
+                                            r.getBookingId(), r.getStatus());
+
+                                    try {
+                                        String jsonResponse = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(r);
+                                        log.info("Full booking response: {}", jsonResponse);
+                                    } catch (JsonProcessingException e) {
+                                        log.warn("Could not serialize response for logging", e);
+                                    }
+
+                                    sendBookingConfirmationEmail(bookingRequest, r);
+                                });
+                    }
+
+                    Mono<Void> persistToDb = Mono.fromRunnable(() ->
+                            flightBookingDao.saveBooking(bookingRequest, totalAmount)
+                    ).subscribeOn(Schedulers.boundedElastic())
+                            .doOnError(e -> log.error("DB persistence failed for bookingId={}: {}", bookingRequest.getBookingId(), e.getMessage(), e))
+                            .onErrorResume(e -> Mono.empty())
+                            .then();
+
+                    return persistToDb.thenReturn(response)
+                            .doOnSuccess(r -> {
+                                log.info("Successfully completed flight booking. BookingId: {}, Status: {}",
+                                        r.getBookingId(), r.getStatus());
+
+                                try {
+                                    String jsonResponse = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(r);
+                                    log.info("Full booking response: {}", jsonResponse);
+                                } catch (JsonProcessingException e) {
+                                    log.warn("Could not serialize response for logging", e);
+                                }
+
+                                sendBookingConfirmationEmail(bookingRequest, r);
+                            });
                 })
                 .doOnError(error -> 
                     log.error("Error during flight booking: {}", error.getMessage(), error)
@@ -591,5 +648,15 @@ public class FlightBookingServiceImpl implements FlightBookingService {
             log.error("Error sending email with limited info for bookingId: {}: {}", 
                     bookingResponse.getBookingId(), e.getMessage(), e);
         }
+    }
+
+    private Long generateBookingDetailId(String bookingId) {
+        CRC32 crc32 = new CRC32();
+        crc32.update(bookingId.getBytes(StandardCharsets.UTF_8));
+        long value = crc32.getValue();
+        if (value <= 0) {
+            value = -value;
+        }
+        return value;
     }
 }

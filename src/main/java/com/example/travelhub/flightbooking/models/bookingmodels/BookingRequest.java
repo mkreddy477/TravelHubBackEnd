@@ -2,23 +2,34 @@ package com.example.travelhub.flightbooking.models.bookingmodels;
 
 import java.util.List;
 
+ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Request DTO for TripJack Book API
- * bookingId - Booking Id from AirReviewResponse
- * paymentInfos - Payment for the booking to Tripjack (List<PaymentInfo>)
- * deliveryInfo - Delivery Details Related to Booking
- * contactInfo - Emergency Contact Details Related to Booking
- * travellerInfo - List of Traveller which flight to be booked
- * gstInfo - GST Which needs to be passed for billing and supplier
- */
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class BookingRequest {
     
     private String bookingId;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonAlias({"base_amount", "BASE_AMOUNT", "baseAmount"})
+    private java.math.BigDecimal baseAmount;
+    @JsonProperty("fareDetails")
+    private FareDetails fareDetails;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonAlias({"booking_detail_id", "BOOKING_DETAIL_ID"})
+    private Long bookingDetailId;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonAlias({"username", "userName"})
+    private String createdBy;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonAlias({"payment_method_id", "PAYMENT_METHOD_ID"})
+    private Integer paymentMethodId;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonAlias({"payment_status_id", "PAYMENT_STATUS_ID"})
+    private Integer paymentStatusId;
     private List<PaymentInfo> paymentInfos;
     private DeliveryInfo deliveryInfo;
     private ContactInfo contactInfo;
@@ -44,6 +55,54 @@ public class BookingRequest {
 
     public void setBookingId(String bookingId) {
         this.bookingId = bookingId;
+    }
+
+    public java.math.BigDecimal getBaseAmount() {
+        return baseAmount;
+    }
+
+    public void setBaseAmount(java.math.BigDecimal baseAmount) {
+        this.baseAmount = baseAmount;
+    }
+
+    public FareDetails getFareDetails() {
+        return fareDetails;
+    }
+
+    public void setFareDetails(FareDetails fareDetails) {
+        this.fareDetails = fareDetails;
+    }
+
+    public Long getBookingDetailId() {
+        return bookingDetailId;
+    }
+
+    public void setBookingDetailId(Long bookingDetailId) {
+        this.bookingDetailId = bookingDetailId;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Integer getPaymentMethodId() {
+        return paymentMethodId;
+    }
+
+    public void setPaymentMethodId(Integer paymentMethodId) {
+        this.paymentMethodId = paymentMethodId;
+    }
+
+    public Integer getPaymentStatusId() {
+        return paymentStatusId;
+    }
+
+    public void setPaymentStatusId(Integer paymentStatusId) {
+        this.paymentStatusId = paymentStatusId;
     }
 
     public List<PaymentInfo> getPaymentInfos() {
@@ -88,6 +147,13 @@ public class BookingRequest {
 
     @Override
     public String toString() {
-        return "BookingRequest{bookingId='" + bookingId + "', travellerInfo=" + travellerInfo + '}';
+        return "BookingRequest{" +
+                "bookingId='" + bookingId + '\'' +
+                ", paymentInfos=" + paymentInfos +
+                ", deliveryInfo=" + deliveryInfo +
+                ", contactInfo=" + contactInfo +
+                ", travellerInfo=" + travellerInfo +
+                ", fareDetails=" + fareDetails +
+                '}';
     }
 }

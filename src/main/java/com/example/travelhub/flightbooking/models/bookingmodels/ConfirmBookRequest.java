@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Request DTO for TripJack Confirm Book API
@@ -23,6 +24,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class ConfirmBookRequest {
     
     private String bookingId;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String createdBy;
     private List<PaymentInfo> paymentInfos;
     private DeliveryInfo deliveryInfo;
     private ContactInfo contactInfo;
@@ -53,6 +56,14 @@ public class ConfirmBookRequest {
 
     public void setBookingId(String bookingId) {
         this.bookingId = bookingId;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
     public List<PaymentInfo> getPaymentInfos() {

@@ -161,6 +161,15 @@ public class TravellerInfo {
 
     @Override
     public String toString() {
-        return "TravellerInfo{ti='" + ti + "', pt='" + pt + "', fN='" + fN + "', lN='" + lN + "', dob='" + dob + "'}";
+        return "TravellerInfo{" +
+                "ti='" + ti + '\'' +
+                ", pt='" + pt + '\'' +
+                ", fN='" + fN + '\'' +
+                ", lN='" + lN + '\'' +
+                ", dob='" + dob + '\'' +
+                ", pNum='" + pNum + '\'' +
+                ", eD=" + eD +
+                ", pNat='" + pNat + '\'' +
+                '}';
     }
 }

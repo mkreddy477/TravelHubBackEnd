@@ -56,10 +56,7 @@ public class FlightBookingController {
     public Mono<ResponseEntity<BookingResponse>> bookFlight(
             @Valid @RequestBody BookingRequest bookingRequest) {
         
-        log.info("Received flight booking request for bookingId: {}", bookingRequest.getBookingId());
-        log.info("Number of travellers: {}", 
-                bookingRequest.getTravellerInfo() != null ? bookingRequest.getTravellerInfo().size() : 0);
-        
+        log.info("Received flight booking request for bookingId: {}", bookingRequest.getBookingId());      
         return flightBookingService.bookFlight(bookingRequest)
                 .map(response -> ResponseEntity.ok()
                         .contentType(MediaType.APPLICATION_JSON)
