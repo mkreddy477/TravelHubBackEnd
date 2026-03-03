@@ -69,14 +69,7 @@ public class FlightSearchController {
                             uiResponse,
                             java.nio.charset.StandardCharsets.UTF_8
                         );
-                        	
-                        System.out.println("====== Final Response to UI ======");
-                        System.out.println("Response written to: ui-response-output.json");
-                        System.out.println("Onward flights: " + (result.getOnward() != null ? result.getOnward().size() : 0));
-                        System.out.println("Return flights: " + (result.getReturns() != null ? result.getReturns().size() : 0));
-                        System.out.println("Response size: " + uiResponse.length() + " characters");
-                        System.out.println("==================================");
-                        System.out.println("====================="+uiResponse);
+ 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

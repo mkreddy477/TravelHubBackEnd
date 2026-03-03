@@ -42,12 +42,7 @@ public class FlightBookingController {
         this.flightBookingService = flightBookingService;
     }
 
-    /**
-     * Book a flight with the given booking request
-     * 
-     * @param bookingRequest containing booking details, traveller info, payment info, etc.
-     * @return Mono of ResponseEntity<BookingResponse>
-     */
+  
     @PostMapping(
         value = "/book",
         consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -145,13 +140,7 @@ public class FlightBookingController {
     }
 
     /**
-     * Confirm a hold booking by making payment
-     * URL: https://apitest.tripjack.com/oms/v1/air/confirm-book
-     * 
-     * Cases:
-     * 1. Fare/booking class not available on Supplier side for Hold PNR
-     * 2. Hold time limit expired for Hold PNR
-     * 
+    
      * @param confirmBookRequest containing bookingId and paymentInfos
      * @return Mono of ResponseEntity<ConfirmBookResponse>
      */
@@ -179,9 +168,7 @@ public class FlightBookingController {
     }
 
     /**
-     * Retrieve booking details and status of an existing booking
-     * URL: https://apitest.tripjack.com/oms/v1/booking-details
-     * 
+    
      * Order Status values:
      * - SUCCESS: Order success with Payment & PNR & Ticket Number generated
      * - ON_HOLD: Order has been blocked
@@ -191,8 +178,6 @@ public class FlightBookingController {
      * - ABORTED: Order has been aborted
      * - UNCONFIRMED: Hold booking not confirmed and PNR released
      * 
-     * @param bookingDetailsRequest containing bookingId and optional requirePaxPricing
-     * @return Mono of ResponseEntity<BookingDetailsResponse>
      */
     @PostMapping(
         value = "/booking-details",
@@ -220,9 +205,7 @@ public class FlightBookingController {
     /**
      * Release a PNR that is currently on HOLD status
      * URL: https://apitest.tripjack.com/oms/v1/air/unhold
-     * 
-     * After calling this API, call Booking Details API to confirm
-     * Order Status should be UNCONFIRMED to confirm PNR is released
+    
      * 
      * @param releasePnrRequest containing bookingId and pnrs to release
      * @return Mono of ResponseEntity<ReleasePnrResponse>

@@ -41,10 +41,7 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 import reactor.util.retry.Retry;
 
-/**
- * Implementation of FlightBookingService using WebFlux WebClient
- * API: https://apitest.tripjack.com/oms/v1/air/book
- */
+
 @Service
 public class FlightBookingServiceImpl implements FlightBookingService {
     

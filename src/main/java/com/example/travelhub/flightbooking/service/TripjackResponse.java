@@ -6,9 +6,7 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * DTO for Tripjack API response - matches actual API structure
- */
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TripjackResponse {
     

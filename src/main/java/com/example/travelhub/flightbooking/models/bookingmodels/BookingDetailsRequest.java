@@ -7,9 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * Request DTO for TripJack Booking Details API
  * Used to retrieve booking details and status of an existing booking
  * URL: https://apitest.tripjack.com/oms/v1/booking-details
- * 
- * bookingId - Id of the booking to retrieve
- * requirePaxPricing - If true, returns traveller level pricing info (Version 1.5+)
+
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)

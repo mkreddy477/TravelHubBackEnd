@@ -128,7 +128,6 @@ public class FlightBookingDaoImpl implements IFlightBookingDao {
                 }
             } else {
                 log.warn("fareDetails is null in bookingRequest");
-                // Calculate taxAmount as fallback: tax = total - baseAmount
                 if (baseAmount != null && finalTotalAmount != null) {
                     taxAmount = finalTotalAmount.subtract(baseAmount);
                 } 
@@ -136,7 +135,6 @@ public class FlightBookingDaoImpl implements IFlightBookingDao {
             if (baseAmount == null) {
                 baseAmount = bookingRequest.getBaseAmount() != null ? bookingRequest.getBaseAmount() : finalTotalAmount;
                 log.info("baseAmount fallback to request.baseAmount or total: {}", baseAmount);
-                // Recalculate taxAmount if we have new baseAmount
                 if (taxAmount == null && baseAmount != null && finalTotalAmount != null) {
                     taxAmount = finalTotalAmount.subtract(baseAmount);
                     log.info("Recalculated taxAmount after baseAmount fallback: {}", taxAmount);

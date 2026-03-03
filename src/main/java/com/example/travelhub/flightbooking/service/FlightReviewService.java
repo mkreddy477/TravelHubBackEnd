@@ -12,12 +12,6 @@ import reactor.core.publisher.Mono;
  */
 @Service
 public interface FlightReviewService {
-    
-    /**
-     * Get flight review details for the given price IDs
-     * 
-     * @param reviewRequest containing list of price IDs
-     * @return Mono of ReviewResponse
-     */
+ 
     Mono<ReviewResponse> getFlightReview(ReviewRequest reviewRequest);
 }

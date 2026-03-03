@@ -12,10 +12,7 @@ import com.example.travelhub.flightbooking.models.bookingmodels.DeliveryInfo;
 import com.example.travelhub.flightbooking.models.bookingmodels.PaymentInfo;
 import com.example.travelhub.flightbooking.models.bookingmodels.TravellerInfo;
 
-/**
- * Validator for BookingRequest to ensure data quality before sending to TripJack API.
- * Validates required fields, formats, and data constraints.
- */
+
 @Component
 public class BookingRequestValidator {
 
@@ -26,10 +23,7 @@ public class BookingRequestValidator {
     private static final Pattern PASSPORT_PATTERN = Pattern.compile("^[A-Z0-9]{6,12}$");
     private static final Pattern COUNTRY_CODE_PATTERN = Pattern.compile("^[A-Z]{2}$");
 
-    /**
-     * Validate the booking request and return a list of validation errors.
-     * Returns an empty list if validation passes.
-     */
+   
     public List<String> validate(BookingRequest request) {
         List<String> errors = new ArrayList<>();
 
@@ -38,16 +32,12 @@ public class BookingRequestValidator {
             errors.add("bookingId is required");
         }
 
-        // Validate paymentInfos
         errors.addAll(validatePaymentInfos(request.getPaymentInfos()));
 
-        // Validate deliveryInfo
         errors.addAll(validateDeliveryInfo(request.getDeliveryInfo()));
 
-        // Validate contactInfo
         errors.addAll(validateContactInfo(request.getContactInfo()));
 
-        // Validate travellerInfo
         errors.addAll(validateTravellerInfos(request.getTravellerInfo()));
 
         return errors;

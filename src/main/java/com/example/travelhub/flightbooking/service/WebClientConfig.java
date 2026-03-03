@@ -8,14 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Configuration
 public class WebClientConfig {
 
-//    @Bean
-//    public WebClient tripjackWebClient(@Value("${tripjack.api.base-url}") String baseUrl,
-//                                       WebClient.Builder builder) {
-//        return builder
-//                .baseUrl(baseUrl)          // e.g. https://apitest.tripjack.com
-//                .build();
-//    }
-	
+
 	
 	@Bean
 	public WebClient tripjackWebClient() {

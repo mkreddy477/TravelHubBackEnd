@@ -35,36 +35,6 @@ public class GlobalExceptionHandler {
 		return null;
   
 
-//    @ExceptionHandler(WebExchangeBindException.class)
-//    public Mono<ResponseEntity<ErrorResponse>> handleValidationException(
-//            WebExchangeBindException ex) {
-//        
-//        log.error("Validation error occurred: {}", ex.getMessage());
-//        
-//        List<String> errors = ex.getBindingResult()
-//                .getFieldErrors()
-//                .stream()
-//                .map(error -> error.getField() + ": " + error.getDefaultMessage())
-//                .collect(Collectors.toList());
-//        
-//   
-//    }
-//    @ExceptionHandler(Exception.class)
-//    public Mono<ResponseEntity<ErrorResponse>> handleGenericException(Exception ex) {
-//        
-//        log.error("Unexpected error occurred: {}", ex.getMessage(), ex);
-//        
-//        ErrorResponse errorResponse = new ErrorResponse(
-//                LocalDateTime.now(),
-//                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-//                "Internal Server Error",
-//                "An unexpected error occurred",
-//                null);
-//        
-//        return Mono.just(ResponseEntity
-//                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                .body(errorResponse));
-//    }
 }
     }
 

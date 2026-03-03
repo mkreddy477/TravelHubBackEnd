@@ -12,10 +12,7 @@ import com.example.travelhub.flightbooking.models.bookingmodels.DeliveryInfo;
 import com.example.travelhub.flightbooking.models.bookingmodels.PaymentInfo;
 import com.example.travelhub.flightbooking.models.bookingmodels.TravellerInfo;
 
-/**
- * Validator for ConfirmBookRequest to ensure data quality before sending to TripJack API.
- * Validates required fields, formats, and data constraints.
- */
+
 @Component
 public class ConfirmBookRequestValidator {
 
@@ -26,19 +23,14 @@ public class ConfirmBookRequestValidator {
     private static final Pattern PASSPORT_PATTERN = Pattern.compile("^[A-Z0-9]{6,12}$");
     private static final Pattern COUNTRY_CODE_PATTERN = Pattern.compile("^[A-Z]{2}$");
 
-    /**
-     * Validate the confirm book request and return a list of validation errors.
-     * Returns an empty list if validation passes.
-     */
+  
     public List<String> validate(ConfirmBookRequest request) {
         List<String> errors = new ArrayList<>();
 
-        // Validate bookingId
         if (request.getBookingId() == null || request.getBookingId().trim().isEmpty()) {
             errors.add("bookingId is required");
         }
 
-        // Validate paymentInfos
         errors.addAll(validatePaymentInfos(request.getPaymentInfos()));
 
         // If this is an instant book request (has traveller info), validate all fields

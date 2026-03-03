@@ -7,15 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 /**
  * Response DTO for TripJack Booking Details API
  * Contains detailed booking information including PNR, ticket numbers, etc.
- * 
- * Order Status values:
- * - SUCCESS: Order success with Payment & PNR & Ticket Number generated
- * - ON_HOLD: Order has been blocked
- * - CANCELLED: Order has been cancelled
- * - FAILED: Order failed due to other reasons
- * - PENDING: Order in pending state
- * - ABORTED: Order has been aborted
- * - UNCONFIRMED: Hold booking not confirmed and PNR released
+ 
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
