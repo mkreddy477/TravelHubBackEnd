@@ -1718,6 +1718,7 @@
             ],
             "propertyType": "Hotel",
             "contact": {
+                "ph": "911125607517",
                 "wb": "https://www.agoda.com/partners/partnersearch.aspx?hid=8491"
             },
             "unicaId": "39659103",
@@ -3079,7 +3080,7 @@
             ],
             "propertyType": "Hotel",
             "contact": {
-                "ph": "91-446-600 00 00",
+                "ph": "01726613000",
                 "fax": "91-446-600 05 55"
             },
             "unicaId": "32532107",
@@ -13990,7 +13991,7 @@
             ],
             "propertyType": "Hotel",
             "contact": {
-                "ph": "91-22-66681234",
+                "ph": "02266681234",
                 "fax": "91-22-66994488"
             },
             "unicaId": "39614731",
@@ -30326,7 +30327,7 @@
             ],
             "propertyType": "Hotel",
             "contact": {
-                "ph": "91-11-2611 0202",
+                "ph": "011 2611 0202",
                 "fax": "91-11-2611 0808"
             },
             "unicaId": "39811711",
@@ -32177,7 +32178,7 @@
             ],
             "propertyType": "Palace",
             "contact": {
-                "ph": "91-0-1244666166",
+                "ph": "01494 672 800",
                 "fax": "91-0-1244666166"
             },
             "unicaId": "39624999",
@@ -33465,7 +33466,7 @@
             ],
             "propertyType": "Hotel",
             "contact": {
-                "ph": "91-22-66992222",
+                "ph": "sp ml",
                 "fax": "91-22-66998888"
             },
             "unicaId": "15238883",
@@ -40309,7 +40310,7 @@
             ],
             "propertyType": "Hotel",
             "contact": {
-                "ph": "91-11-2576 0000",
+                "ph": "01143662500",
                 "fax": "91-11-2578 1016"
             },
             "unicaId": "39781151",
@@ -41837,7 +41838,7 @@
         },
         {
             "name": "Hotel Southern Regency",
-            "description": "{\"Overview\":\"At Hotel Southern Regency, exceptional service and top-notch amenities create a memorable experience for guests.Complimentary internet access is available in the hotel to ensure you stay connected during your visit.Arrange your trips to and from the airport using the hotel's convenient transportation services booking.Car hire and shuttle offerings at the hotel simplify arranging your excursions, explorations, and additional activities in New Delhi and NCR. For guests with their own vehicle, parking facilities are provided. Continuously receive the support you require through front desk amenities such as concierge service, luggage storage and safety deposit boxes.At the hotel, their ticket service and tours is also capable of assisting with booking tickets and securing reservations for entertainment and adventures.Always look your best in your preferred attire with the dry cleaning service and laundry service provided at Hotel Southern Regency. Craving relaxation? In-room amenities such as room service and daily housekeeping allow you to maximize your time spent inside the room.Additionally, you can obtain minor travel essentials and miscellaneous items at the convenience stores without departing from the Hotel Southern Regency. Due to health concerns, smoking is strictly prohibited within the entire premises of hotel. Accommodations come equipped with all the conveniences required for a restful night's slumber. A selection of rooms feature blackout curtains and air conditioning to ensure your comfort and convenience. A few chosen rooms are equipped with daily newspaper, television and cable TV to ensure guest amusement.In certain rooms, the hotel offers visitors access to a refrigerator, a coffee or tea maker, bottled water and mini bar.Hotel Southern Regency offers a hair dryer and toiletries in the restrooms of specific accommodations. A delightful breakfast is the perfect way to begin your day, and at Hotel Southern Regency, you can always indulge in a scrumptious meal on-site.All adore a delightful cup of coffee! An on-site coffee shop ensures you can relish a cup of authentic, freshly-brewed coffee every morning -- or whenever you desire it.Allow your journey to be free from the pangs of hunger! On-site eateries offer delicious and accessible meal choices. At Hotel Southern Regency, guests can take pleasure in the delightful recreational amenities provided for their entertainment. At the hotel fitness center, you have the option to engage in your daily exercise routine or simply alleviate your jet lag by breaking a sweat.\",\"Snippet\":\"At Hotel Southern Regency, exceptional service and top-notch amenities create a memorable experience\"}",
+            "description": "{\"Overview\":\"At Hotel Southern Regency, exceptional service and top-notch amenities create a memorable experience for guests.Complimentary internet access is available in the hotel to ensure you stay connected during your visit.Arrange your trips to and from the airport using the hotel's convenient transportation services booking.Car hire and shuttle offerings at the hotel simplify arranging your excursions, explorations, and additional activities in New Delhi and NCR. For guests with their own vehicle, parking facilities are provided. Continuously receive the support you require through front desk amenities such as concierge service, luggage storage and safety deposit boxes. At the hotel, their ticket service and tours is also capable of assisting with booking tickets and securing reservations for entertainment and adventures. Always look your best in your preferred attire with the dry cleaning service and laundry service provided at Hotel Southern Regency. Craving relaxation? In-room amenities such as room service and daily housekeeping allow you to maximize your time spent inside the room. Additionally, you can obtain minor travel essentials and miscellaneous items at the convenience stores without departing from the Hotel Southern Regency. Due to health concerns, smoking is strictly prohibited within the entire premises of hotel.Accommodations come equipped with all the conveniences required for a restful night's slumber. A selection of rooms feature blackout curtains and air conditioning to ensure your comfort and convenience.A few chosen rooms are equipped with daily newspaper, television and cable TV to ensure guest amusement.In certain rooms, the hotel offers visitors access to a refrigerator, a coffee or tea maker, bottled water and mini bar.Hotel Southern Regency offers a hair dryer and toiletries in the restrooms of specific accommodations. A delightful breakfast is the perfect way to begin your day, and at Hotel Southern Regency, you can always indulge in a scrumptious meal on-site.All adore a delightful cup of coffee! An on-site coffee shop ensures you can relish a cup of authentic, freshly-brewed coffee every morning -- or whenever you desire it.Allow your journey to be free from the pangs of hunger! On-site eateries offer delicious and accessible meal choices. At Hotel Southern Regency, guests can take pleasure in the delightful recreational amenities provided for their entertainment. At the hotel fitness center, you have the option to engage in your daily exercise routine or simply alleviate your jet lag by breaking a sweat.\",\"Snippet\":\"At Hotel Southern Regency, exceptional service and top-notch amenities create a memorable experience\"}",
             "rating": 3,
             "geolocation": {
                 "ln": "77.19672",
@@ -41849,7 +41850,7 @@
                 "postalCode": "110005",
                 "city": {
                     "code": "14552",
-                    "name": "New Delhi and NCR"
+                    "name": "New Delhi"
                 },
                 "state": {
                     "name": "Delhi National Territory"
@@ -41896,14 +41897,6 @@
                 {
                     "url": "https://q-xx.bstatic.com/xdata/images/hotel/max1000/78632622.jpg?k=61c215ca33d9d7eddddb0b0e6d448eb62ba6b19a6821990ea90e73f8b9e6dd27&o=&s=312x",
                     "sz": "XXL"
-                },
-                {
-                    "url": "https://pix8.agoda.net/property/36769369/0/b5d2086144bc8e0f1001ad05f4621397.jpg?ce=0&s=312x",
-                    "sz": "Standard"
-                },
-                {
-                    "url": "https://pix8.agoda.net/property/36769369/0/d30d5cf05976d3bb5007325723764d28.jpg?ce=0&s=312x",
-                    "sz": "Standard"
                 },
                 {
                     "url": "https://pix8.agoda.net/geo/poi/153405/2_153405.jpg?ca=6&ce=1&s=312x",
@@ -46655,6 +46648,7 @@
             ],
             "propertyType": "Hotel",
             "contact": {
+                "ph": "08652636363",
                 "fax": "91-2-228270345"
             },
             "unicaId": "39705938",
@@ -48540,7 +48534,7 @@
             ],
             "propertyType": "Hotel",
             "contact": {
-                "ph": "91-240-6603030",
+                "ph": "91 240 6603030",
                 "fax": "91-240-6603131"
             },
             "unicaId": "39659228",
@@ -48550,7 +48544,7 @@
         },
         {
             "name": "Westend Inn",
-            "description": "{\"Overview\":\"Great care is taken to ensure guests experience comfort through top-notch services and amenities. Remain linked during your visit by utilizing the complimentary internet access available.Prior to your check-in date, you can arrange airport transportation services, guaranteeing a seamless and efficient experience for both arrival and departure.Discovering New Delhi and NCR becomes even more accessible, thanks to the car hire amenities provided at the hotel.The hotel offers complimentary parking for guests who arrive with their own mode of transport. Effortlessly plan your daily activities and travel requirements with express check-in or check-out, luggage storage and safety deposit boxes provided by the front desk services. Securing top-notch tickets and reserving prime dining spots become effortless through assistance from the hotel's tours.During your stay at this fantastic hotel, experience comfort and warmth from the delightful on-site fireplace on those chilly days and nights. For extended visits or whenever required, the dry cleaning service and laundry service ensures your preferred travel garments remain clean and accessible. During leisurely days and evenings, in-room amenities such as 24-hour room service, room service and daily housekeeping enable you to maximize your stay in the room. The hotel is completely smoke-free. Crafted for coziness, every guestroom provides an array of features, guaranteeing a tranquil night's sleep while maintaining the level of comfort. For a more enjoyable stay, select rooms at hotel are equipped with linen service and air conditioning.For certain chosen rooms, guests can enjoy in-room amusement like daily newspaper, television and cable TV as a part of their stay.Rest assured that your hydration needs will be met, as some guestrooms are equipped with a refrigerator, a coffee or tea maker, bottled water, instant coffee and mini bar. Maintain your cleanliness and comfort using a hair dryer, toiletries and bathrobes available in select guest restrooms. Each morning at Westend Inn, a scrumptious, homemade breakfast kick-starts the day. Begin your holiday mornings right with your essential cup of coffee, offered daily at the cafe on-site. During your visit, indulge in a range of delightful culinary choices at hotel to enhance your experience.Experience a fantastic evening effortlessly! Relish an entertaining night without venturing beyond the confines of the bar. Indulge in the numerous pursuits available at Westend Inn.Begin your holiday perfectly by taking a plunge into the swimming pool. Eliminate those holiday calories by stopping by hotel and making use of their well-equipped exercise amenities.\",\"Snippet\":\"Great care is taken to ensure guests experience comfort through top-notch services and amenities. Re\"}",
+            "description": "{\"Overview\":\"Great care is taken to ensure guests experience comfort through top-notch services and amenities.Remain linked during your visit by utilizing the complimentary internet access available.Prior to your check-in date, you can arrange airport transportation services, guaranteeing a seamless and efficient experience for both arrival and departure. Discovering New Delhi and NCR becomes even more accessible, thanks to the car hire amenities provided at the hotel.The hotel offers complimentary parking for guests who arrive with their own mode of transport. Effortlessly plan your daily activities and travel requirements with express check-in or check-out, luggage storage and safety deposit boxes provided by the front desk services.Securing top-notch tickets and reserving prime dining spots become effortless through assistance from the hotel's tours. During your stay at this fantastic hotel, experience comfort and warmth from the delightful on-site fireplace on those chilly days and nights.For extended visits or whenever required, the dry cleaning service and laundry service ensures your preferred travel garments remain clean and accessible.During leisurely days and evenings, in-room amenities such as 24-hour room service, room service and daily housekeeping enable you to maximize your stay in the room. The hotel is completely smoke-free. Crafted for coziness, every guestroom provides an array of features, guaranteeing a tranquil night's sleep while maintaining the level of comfort. For a more enjoyable stay, select rooms at hotel are equipped with linen service and air conditioning. For certain chosen rooms, guests can enjoy in-room amusement like daily newspaper, television and cable TV as a part of their stay. Rest assured that your hydration needs will be met, as some guestrooms are equipped with a refrigerator, bottled water, a coffee or tea maker, instant coffee and mini bar.Maintain your cleanliness and comfort using a hair dryer, toiletries and bathrobes available in select guest restrooms. Each morning at Westend Inn, a scrumptious, homemade breakfast kick-starts the day.Begin your holiday mornings right with your essential cup of coffee, offered daily at the cafe on-site. During your visit, indulge in a range of delightful culinary choices at hotel to enhance your experience. Experience a fantastic evening effortlessly! Relish an entertaining night without venturing beyond the confines of the bar.Indulge in the numerous pursuits available at Westend Inn. Begin your holiday perfectly by taking a plunge into the swimming pool. Eliminate those holiday calories by stopping by hotel and making use of their well-equipped exercise amenities.\",\"Snippet\":\"Great care is taken to ensure guests experience comfort through top-notch services and amenities.Rem\"}",
             "rating": 4,
             "geolocation": {
                 "ln": "77.1114",
@@ -48562,7 +48556,7 @@
                 "postalCode": "110037",
                 "city": {
                     "code": "14552",
-                    "name": "New Delhi and NCR"
+                    "name": "New Delhi"
                 },
                 "state": {
                     "name": "Delhi National Territory"

@@ -1,12 +1,4 @@
-package com.example.travelhub.locationservice.util;
-
-import com.example.travelhub.locationservice.model.HotelDetails;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.stereotype.Component;
+package com.example.travelhub.locationservice.Util;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +8,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Component;
+
+import com.example.travelhub.locationservice.model.HotelDetails;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
@@ -60,6 +60,8 @@ public class HotelDataExtractor {
                     hotelDetailsList.add(details);
                 }
             }
+        } else {
+            log.warn("Unexpected JSON structure. Root is neither an array nor has 'hotelOpInfos' field");
         }
         
         // Save to hotel-details.json
@@ -88,6 +90,11 @@ public class HotelDataExtractor {
             Integer rating = getIntValue(hotelNode, "rating");
             String propertyType = getTextValue(hotelNode, "propertyType");
             
+            if (hotelId == null) {
+                log.warn("Skipping hotel with null ID");
+                return null;
+            }
+            
             // Extract description (it's a JSON string, so we'll parse it)
             String descriptionJson = getTextValue(hotelNode, "description");
             String cleanDescription = extractCleanDescription(descriptionJson);
@@ -111,6 +118,29 @@ public class HotelDataExtractor {
             metadata.put("isDeleted", getBooleanValue(hotelNode, "isDeleted"));
             metadata.put("createdOn", getTextValue(hotelNode, "createdOn"));
             
+            // Add check-in/check-out times if available
+            if (hotelNode.has("checkInTime")) {
+                metadata.put("checkInTime", getTextValue(hotelNode, "checkInTime"));
+            }
+            if (hotelNode.has("checkOutTime")) {
+                metadata.put("checkOutTime", getTextValue(hotelNode, "checkOutTime"));
+            }
+            
+            // Add guest rating if available
+            if (hotelNode.has("guestRating")) {
+                metadata.put("guestRating", getDoubleValue(hotelNode, "guestRating"));
+            }
+            
+            // Add review count if available
+            if (hotelNode.has("reviewCount")) {
+                metadata.put("reviewCount", getIntValue(hotelNode, "reviewCount"));
+            }
+            
+            // Add chain info if available
+            if (hotelNode.has("chain")) {
+                metadata.put("chain", getTextValue(hotelNode, "chain"));
+            }
+            
             return HotelDetails.builder()
                     .hotelId(hotelId)
                     .name(name)
@@ -124,7 +154,7 @@ public class HotelDataExtractor {
                     .build();
                     
         } catch (Exception e) {
-            log.error("Error extracting hotel details from node", e);
+            log.error("Error extracting hotel details from node: {}", e.getMessage(), e);
             return null;
         }
     }
@@ -138,7 +168,16 @@ public class HotelDataExtractor {
         if (hotelNode.has("images") && hotelNode.get("images").isArray()) {
             for (JsonNode imageNode : hotelNode.get("images")) {
                 if (imageNode.has("url")) {
-                    images.add(imageNode.get("url").asText());
+                    String url = imageNode.get("url").asText();
+                    if (url != null && !url.isEmpty()) {
+                        images.add(url);
+                    }
+                } else if (imageNode.isTextual()) {
+                    // Handle case where images is array of strings
+                    String url = imageNode.asText();
+                    if (url != null && !url.isEmpty()) {
+                        images.add(url);
+                    }
                 }
             }
         }
@@ -152,10 +191,24 @@ public class HotelDataExtractor {
     private List<String> extractAmenities(JsonNode hotelNode) {
         List<String> amenities = new ArrayList<>();
         
-        if (hotelNode.has("facilities") && hotelNode.get("facilities").isArray()) {
-            for (JsonNode facilityNode : hotelNode.get("facilities")) {
-                if (facilityNode.has("name")) {
-                    amenities.add(facilityNode.get("name").asText());
+        // Try different possible field names
+        String[] possibleFields = {"facilities", "amenities", "features"};
+        
+        for (String fieldName : possibleFields) {
+            if (hotelNode.has(fieldName) && hotelNode.get(fieldName).isArray()) {
+                for (JsonNode facilityNode : hotelNode.get(fieldName)) {
+                    if (facilityNode.has("name")) {
+                        String amenity = facilityNode.get("name").asText();
+                        if (amenity != null && !amenity.isEmpty()) {
+                            amenities.add(amenity);
+                        }
+                    } else if (facilityNode.isTextual()) {
+                        // Handle case where amenities is array of strings
+                        String amenity = facilityNode.asText();
+                        if (amenity != null && !amenity.isEmpty()) {
+                            amenities.add(amenity);
+                        }
+                    }
                 }
             }
         }
@@ -167,20 +220,49 @@ public class HotelDataExtractor {
      * Extract address from hotel node
      */
     private HotelDetails.Address extractAddress(JsonNode hotelNode) {
-        if (!hotelNode.has("address")) {
+        JsonNode addressNode = null;
+        
+        // Try different possible field names for address
+        if (hotelNode.has("address")) {
+            addressNode = hotelNode.get("address");
+        } else if (hotelNode.has("ad")) {
+            addressNode = hotelNode.get("ad");
+        }
+        
+        if (addressNode == null) {
+            log.debug("No address found for hotel");
             return null;
         }
         
-        JsonNode addressNode = hotelNode.get("address");
-        
         // Extract coordinates
         HotelDetails.Coordinates coordinates = null;
+        
+        // Try geolocation field
         if (hotelNode.has("geolocation")) {
             JsonNode geoNode = hotelNode.get("geolocation");
-            coordinates = HotelDetails.Coordinates.builder()
-                    .latitude(getDoubleValue(geoNode, "lt"))
-                    .longitude(getDoubleValue(geoNode, "ln"))
-                    .build();
+            Double lat = getDoubleValue(geoNode, "lt");
+            Double lng = getDoubleValue(geoNode, "ln");
+            
+            if (lat != null && lng != null) {
+                coordinates = HotelDetails.Coordinates.builder()
+                        .latitude(lat)
+                        .longitude(lng)
+                        .build();
+            }
+        }
+        
+        // Try coordinates field directly in address
+        if (coordinates == null && addressNode.has("coordinates")) {
+            JsonNode coordNode = addressNode.get("coordinates");
+            Double lat = getDoubleValue(coordNode, "latitude");
+            Double lng = getDoubleValue(coordNode, "longitude");
+            
+            if (lat != null && lng != null) {
+                coordinates = HotelDetails.Coordinates.builder()
+                        .latitude(lat)
+                        .longitude(lng)
+                        .build();
+            }
         }
         
         return HotelDetails.Address.builder()
@@ -197,15 +279,43 @@ public class HotelDataExtractor {
      * Extract contact info from hotel node
      */
     private HotelDetails.ContactInfo extractContactInfo(JsonNode hotelNode) {
-        if (!hotelNode.has("contact")) {
-            return null;
+        JsonNode contactNode = null;
+        
+        // Try different possible field names
+        if (hotelNode.has("contact")) {
+            contactNode = hotelNode.get("contact");
+        } else if (hotelNode.has("contactInfo")) {
+            contactNode = hotelNode.get("contactInfo");
         }
         
-        JsonNode contactNode = hotelNode.get("contact");
+        if (contactNode == null) {
+            log.debug("No contact info found for hotel");
+            // Return empty contact info instead of null
+            return HotelDetails.ContactInfo.builder().build();
+        }
+        
+        // Extract phone
+        String phone = getTextValue(contactNode, "ph");
+        if (phone == null) {
+            phone = getTextValue(contactNode, "phone");
+        }
+        
+        // Extract email
+        String email = getTextValue(contactNode, "email");
+        if (email == null) {
+            email = getTextValue(contactNode, "em");
+        }
+        
+        // Extract website
+        String website = getTextValue(contactNode, "website");
+        if (website == null) {
+            website = getTextValue(contactNode, "web");
+        }
         
         return HotelDetails.ContactInfo.builder()
-                .phone(getTextValue(contactNode, "ph"))
-                .email(null) // Not in the sample data
+                .phone(phone)
+                .email(email)
+                .website(website)
                 .build();
     }
     
@@ -236,10 +346,12 @@ public class HotelDataExtractor {
                 description.append(descNode.get("amenities").asText());
             }
             
-            return description.toString().trim();
+            String result = description.toString().trim();
+            return result.isEmpty() ? null : result;
             
         } catch (Exception e) {
-            log.warn("Could not parse description JSON, returning as-is");
+            log.debug("Could not parse description as JSON, returning as plain text");
+            // Return the original string if it's not JSON
             return descriptionJson;
         }
     }

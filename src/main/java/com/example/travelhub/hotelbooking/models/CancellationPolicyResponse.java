@@ -4,6 +4,7 @@ public class CancellationPolicyResponse {
     
     private String id;
     private CancellationPolicy cancellationPolicy;
+    private Status status;
     
     public CancellationPolicyResponse() {
     }
@@ -23,4 +24,12 @@ public class CancellationPolicyResponse {
     public void setCancellationPolicy(CancellationPolicy cancellationPolicy) {
         this.cancellationPolicy = cancellationPolicy;
     }
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 }

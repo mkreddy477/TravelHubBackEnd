@@ -3,6 +3,7 @@ package com.example.travelhub.hotelbooking.controller;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.travelhub.hotelbooking.models.CancellationPolicyResponse;
-import com.example.travelhub.hotelbooking.models.HotelOperationRequest;
+import com.example.travelhub.hotelbooking.models.CancellationPolicyRequest;
 import com.example.travelhub.hotelbooking.service.HotelCancellationPolicyService;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,8 +23,9 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/api/hotels")
 public class HotelCancellationPolicyController {
-
-    private final HotelCancellationPolicyService cancellationPolicyService;
+	
+	@Autowired
+    private  HotelCancellationPolicyService cancellationPolicyService;
     private final AtomicLong cancellationPolicyHitCount = new AtomicLong(0);
     private final boolean dumpCancellationPolicyResponse;
 
@@ -36,7 +38,7 @@ public class HotelCancellationPolicyController {
 
     @PostMapping("/cancellation-policy")
     public Mono<CancellationPolicyResponse> getCancellationPolicy(
-            @RequestBody HotelOperationRequest request, 
+            @RequestBody CancellationPolicyRequest request, 
             ServerHttpResponse response) throws JsonProcessingException {
         
         long hitNo = cancellationPolicyHitCount.incrementAndGet();

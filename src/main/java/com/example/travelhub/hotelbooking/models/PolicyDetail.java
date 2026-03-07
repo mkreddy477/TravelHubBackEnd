@@ -18,8 +18,8 @@ public class PolicyDetail {
     @JsonProperty("pp")
     private Double pp;   // Percentage (optional, sometimes present)
     
-    @JsonProperty("rn")
-    private Integer rn;  // Room number (optional, sometimes present)
+//    @JsonProperty("rn")
+//    private Integer rn;  // Room number (optional, sometimes present)
 
     // Constructor
     public PolicyDetail() {
@@ -58,11 +58,11 @@ public class PolicyDetail {
         this.pp = pp;
     }
 
-    public Integer getRn() {
-        return rn;
-    }
-
-    public void setRn(Integer rn) {
-        this.rn = rn;
-    }
+//    public Integer getRn() {
+//        return rn;
+//    }
+//
+//    public void setRn(Integer rn) {
+//        this.rn = rn;
+//    }
 }
