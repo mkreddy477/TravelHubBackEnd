@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header .checkmark {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .content {
+            padding: 30px;
+        }
+        .booking-id {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .booking-id label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .booking-id .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin-top: 5px;
+        }
+        .flight-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+        .flight-route {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .city {
+            text-align: center;
+        }
+        .city-code {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+        .city-name {
+            font-size: 12px;
+            color: #666;
+        }
+        .flight-arrow {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        .flight-arrow::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background-color: #667eea;
+        }
+        .flight-arrow .plane {
+            font-size: 20px;
+            background: white;
+            padding: 0 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .flight-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .detail-item {
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+        }
+        .detail-item label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .detail-item .value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 3px;
+        }
+        .passengers-section {
+            margin-bottom: 25px;
+        }
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        .passenger-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .passenger-name {
+            font-weight: 600;
+            color: #333;
+        }
+        .passenger-type {
+            font-size: 12px;
+            color: #666;
+            margin-left: 10px;
+        }
+        .price-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .price-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .price-value {
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            font-size: 12px;
+            color: #666;
+        }
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            background-color: #28a745;
+            color: white;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="checkmark">&#10003;</div>
+            <h1>Booking Confirmed!</h1>
+            <p th:text="'Hello, ' + ${recipientName} + '!'">Hello, Guest!</p>
+            <span class="status-badge" th:text="${bookingStatus} ?: 'CONFIRMED'">CONFIRMED</span>
+        </div>
+        
+        <div class="content">
+            <div class="booking-id">
+                <label>Booking Reference / PNR</label>
+                <div class="value" th:text="${pnr} ?: ${bookingId}">ABC123</div>
+            </div>
+            
+            <div class="flight-card">
+                <div class="flight-route">
+                    <div class="city">
+                        <div class="city-code" th:text="${origin}">DEL</div>
+                    </div>
+                    <div class="flight-arrow">
+                        <span class="plane">&#9992;</span>
+                    </div>
+                    <div class="city">
+                        <div class="city-code" th:text="${destination}">BOM</div>
+                    </div>
+                </div>
+                
+                <div class="flight-details">
+                    <div class="detail-item">
+                        <label>Departure</label>
+                        <div class="value" th:text="${departureDate} + ' ' + ${departureTime}">25 Dec 2024 10:00</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Arrival</label>
+                        <div class="value" th:text="${arrivalDate} + ' ' + ${arrivalTime}">25 Dec 2024 12:30</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Airline</label>
+                        <div class="value" th:text="${airlineName}">Air India</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Flight</label>
+                        <div class="value" th:text="${flightNumber}">AI 101</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Class</label>
+                        <div class="value" th:text="${cabinClass} ?: 'Economy'">Economy</div>
+                    </div>
+                    <div class="detail-item">
+                        <label>Booking ID</label>
+                        <div class="value" th:text="${bookingId}">TJS123456</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="passengers-section">
+                <div class="section-title">Passengers</div>
+                <div class="passenger-card" th:each="passenger : ${passengers}">
+                    <span class="passenger-name" th:text="${passenger.title} + ' ' + ${passenger.firstName} + ' ' + ${passenger.lastName}">Mr John Doe</span>
+                    <span class="passenger-type" th:text="'(' + ${passenger.paxType} + ')'">(ADULT)</span>
+                    <div th:if="${passenger.ticketNumber != null}" style="font-size: 12px; color: #666; margin-top: 5px;">
+                        Ticket: <span th:text="${passenger.ticketNumber}">1234567890</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="price-section">
+                <div class="price-label">Total Amount Paid</div>
+                <div class="price-value" th:text="${currency} + ' ' + ${totalFare}">INR 5,000</div>
+            </div>
+            
+            <div style="background-color: #fff3cd; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+                <strong style="color: #856404;">Important Information:</strong>
+                <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #856404;">
+                    <li>Please arrive at the airport at least 2 hours before departure</li>
+                    <li>Carry a valid photo ID for domestic flights</li>
+                    <li>Check-in opens 48 hours before departure</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Thank you for booking with <strong>TravelHub</strong></p>
+            <p>For support, contact us at <a href="mailto:support@travelhub.com">support@travelhub.com</a></p>
+            <p style="margin-top: 15px; font-size: 11px; color: #999;">
+                This is an automated email. Please do not reply to this message.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
