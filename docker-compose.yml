@@ -1,0 +1,69 @@
+services:
+
+  # ── Spring Boot App ────────────────────────────────────────────────────────
+  travelhub-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: travelhub-app
+    restart: on-failure:5          # auto-restart up to 5 times on crash
+    ports:
+      - "127.0.0.1:8081:8080"   # host port 8081 → container port 8080 (avoids conflicts)
+    environment:
+      # Server
+      SERVER_PORT: 8080
+
+      # Database (external PostgreSQL — set in .env)
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+
+      # Mail
+      SPRING_MAIL_USERNAME: ${MAIL_USERNAME:-triphivetours@gmail.com}
+      SPRING_MAIL_PASSWORD: ${MAIL_PASSWORD}
+
+      # TripJack API
+      TRIPJACK_API_KEY: ${TRIPJACK_API_KEY:-6128195cb95765-02c3-4c40-a3d2-d4e8ed294ab0}
+
+      # Feature flags
+      TRAVELHUB_MOCK_ENABLED: ${MOCK_ENABLED:-false}
+    env_file:
+      - .env
+    # Health check — uses Spring Boot Actuator /actuator/health endpoint
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+      interval: 30s       # check every 30 seconds
+      timeout: 10s        # fail if no response within 10s
+      retries: 5          # mark unhealthy after 5 consecutive failures
+      start_period: 60s   # give the JVM 60s to start before first check
+    networks:
+      - travelhub-net
+
+  # ── Cloudflare Tunnel ─────────────────────────────────────────────────────
+  # PHASE 1 (now):   Quick tunnel — random trycloudflare.com URL, no account needed.
+  #                  Run: docker logs travelhub-tunnel   to find your URL.
+  #
+  # PHASE 2 (later): Named tunnel — stable permanent URL.
+  #                  1. Create account → https://dash.cloudflare.com/sign-up
+  #                  2. Add a domain to Cloudflare
+  #                  3. Go to Zero Trust → Networks → Tunnels → Create tunnel → Docker
+  #                  4. Copy the token from the install command
+  #                  5. Set TUNNEL_TOKEN=<your_token> in .env
+  #                  6. Comment out the PHASE 1 command below, uncomment PHASE 2
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: travelhub-tunnel
+    restart: on-failure:5
+    # PHASE 1 — quick tunnel (active now)
+    command: tunnel --no-autoupdate --url http://travelhub-app:8080
+    # PHASE 2 — named tunnel with permanent URL (uncomment when you have a token)
+    # command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+    depends_on:
+      travelhub-app:
+        condition: service_healthy
+    networks:
+      - travelhub-net
+
+networks:
+  travelhub-net:
+    driver: bridge
