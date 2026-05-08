@@ -13,25 +13,34 @@ services:
       # Server
       SERVER_PORT: 8080
 
-      # Database (external PostgreSQL — set in .env)
-      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
-      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      # Database — using H2 in-memory (no external DB needed)
+      # When you have a real PostgreSQL, replace these 4 lines with your DB credentials
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:travelhub;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: ""
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
 
       # Mail
       SPRING_MAIL_USERNAME: ${MAIL_USERNAME:-triphivetours@gmail.com}
       SPRING_MAIL_PASSWORD: ${MAIL_PASSWORD}
 
       # TripJack API
-      TRIPJACK_API_KEY: ${TRIPJACK_API_KEY:-6128195cb95765-02c3-4c40-a3d2-d4e8ed294ab0}
+      TRIPJACK_API_KEY: ${TRIPJACK_API_KEY:-6128192bcff13d-9f45-4bd2-b776-5f54a05c74e9}
 
       # Feature flags
-      TRAVELHUB_MOCK_ENABLED: ${MOCK_ENABLED:-false}
+      TRAVELHUB_MOCK_ENABLED: "false"
+      TRAVELHUB_DEBUG_LOG_TRIPJACK: "true"
+      TRAVELHUB_DEBUG_DUMP_SEARCH_RESPONSE: "true"
+
+      # Actuator — disable mail & db health checks until credentials are configured
+      MANAGEMENT_HEALTH_MAIL_ENABLED: "false"
+      MANAGEMENT_HEALTH_DB_ENABLED: "false"
     env_file:
       - .env
     # Health check — uses Spring Boot Actuator /actuator/health endpoint
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health || exit 1"]
       interval: 30s       # check every 30 seconds
       timeout: 10s        # fail if no response within 10s
       retries: 5          # mark unhealthy after 5 consecutive failures
@@ -39,28 +48,20 @@ services:
     networks:
       - travelhub-net
 
-  # ── Cloudflare Tunnel ─────────────────────────────────────────────────────
-  # PHASE 1 (now):   Quick tunnel — random trycloudflare.com URL, no account needed.
-  #                  Run: docker logs travelhub-tunnel   to find your URL.
-  #
-  # PHASE 2 (later): Named tunnel — stable permanent URL.
-  #                  1. Create account → https://dash.cloudflare.com/sign-up
-  #                  2. Add a domain to Cloudflare
-  #                  3. Go to Zero Trust → Networks → Tunnels → Create tunnel → Docker
-  #                  4. Copy the token from the install command
-  #                  5. Set TUNNEL_TOKEN=<your_token> in .env
-  #                  6. Comment out the PHASE 1 command below, uncomment PHASE 2
-  cloudflared:
-    image: cloudflare/cloudflared:latest
-    container_name: travelhub-tunnel
+  # ── ngrok tunnel (free permanent URL — requires NGROK_AUTHTOKEN in .env) ───
+  # Free static domain: sign up at https://ngrok.com → copy your authtoken
+  # then go to Cloud Edge → Domains to find your free static domain
+  # e.g. abc-xyz-123.ngrok-free.app  (never changes, even after restarts)
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: travelhub-ngrok
     restart: on-failure:5
-    # PHASE 1 — quick tunnel (active now)
-    command: tunnel --no-autoupdate --url http://travelhub-app:8080
-    # PHASE 2 — named tunnel with permanent URL (uncomment when you have a token)
-    # command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
+    command: http travelhub-app:8080 --url=${NGROK_DOMAIN}
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN}
     depends_on:
       travelhub-app:
-        condition: service_healthy
+        condition: service_healthy  # only start after app is healthy
     networks:
       - travelhub-net
 

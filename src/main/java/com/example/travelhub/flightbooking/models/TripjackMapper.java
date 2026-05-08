@@ -82,12 +82,24 @@ public class TripjackMapper {
         return airlines.isEmpty() ? null : airlines;
     }
 
+    /**
+     * Normalises tripType so all of these work:
+     *   "one-way", "ONE_WAY", "oneway", "ONEWAY"
+     *   "round-trip", "ROUND_TRIP", "roundtrip"
+     *   "multi-city", "MULTI_CITY", "multicity"
+     */
+    private String normalizeTripType(String tripType) {
+        if (tripType == null) return "";
+        // lowercase + replace underscores/spaces with hyphens
+        return tripType.toLowerCase(Locale.ROOT).replace("_", "-").replace(" ", "-");
+    }
+
     private List<RouteInfo> buildRouteInfos(FlightSearchRequest uiReq) {
         List<RouteInfo> routeInfos = new ArrayList<RouteInfo>();
 
-        String tripType = uiReq.getTripType();
+        String tripType = normalizeTripType(uiReq.getTripType());
 
-        if ("one-way".equalsIgnoreCase(tripType)) {
+        if ("one-way".equals(tripType)) {
 
             routeInfos.add(new RouteInfo(
                     new CityOrAirport(uiReq.getOrigin()),
@@ -95,7 +107,7 @@ public class TripjackMapper {
                     uiReq.getDepartureDate().toString()
             ));
 
-        } else if ("round-trip".equalsIgnoreCase(tripType)) {
+        } else if ("round-trip".equals(tripType)) {
 
             // onward
             routeInfos.add(new RouteInfo(
@@ -110,7 +122,7 @@ public class TripjackMapper {
                     uiReq.getReturnDate().toString()
             ));
 
-        } else if ("multi-city".equalsIgnoreCase(tripType)) {
+        } else if ("multi-city".equals(tripType)) {
 
             if (uiReq.getMultiCityLegs() != null) {
                 // 🔴 use top-level MultiCityLeg, not FlightSearchRequest.MultiCityLeg
